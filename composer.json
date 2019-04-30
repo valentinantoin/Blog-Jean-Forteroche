@@ -1,0 +1,16 @@
+{
+    "name": "valentin/projet4",
+    "type": "project",
+    "require": {
+        "composer-plugin-api": "^1.1",
+        "twig/twig": "^1.40",
+        "tracy/tracy": "^2.5"
+    },
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Valentin ANTOIN",
+            "email": "valentin.antoin@gmail.com"
+        }
+    ]
+}
