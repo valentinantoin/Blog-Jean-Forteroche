@@ -1,0 +1,39 @@
+/*---   GLOBAL   ---*/
+
+body {
+    background-image: url("../img/paper.jpg");
+}
+
+/*---   HEADER   ---*/
+nav > a:first-child{
+    margin-left: 0;
+}
+
+
+
+/*---   MAIN   ---*/
+
+h1 {
+    margin-top: 2rem;
+    text-align: center;
+    text-decoration: underline;
+}
+
+/*---   FORM   ---*/
+
+form,
+button{
+    width: 50%;
+    margin-left: 25%;
+}
+
+form > div,
+button{
+    margin-top: 2rem;
+}
+
+/*---   CARROUSEL   ---*/
+
+.carousel-inner {
+    height: 700px;
+}
