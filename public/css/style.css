@@ -4,6 +4,13 @@ body {
     background-image: url("../img/paper.jpg");
 }
 
+.card {
+    font-family: sofia;
+}
+
+main {
+    padding-top: 3rem;
+}
 /*---   HEADER   ---*/
 nav > a:first-child{
     margin-left: 0;
@@ -15,6 +22,7 @@ nav > a:first-child{
 
 h1 {
     margin-top: 2rem;
+    margin-bottom: 2rem;
     text-align: center;
     text-decoration: underline;
 }
@@ -36,4 +44,16 @@ button{
 
 .carousel-inner {
     height: 700px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-top: 10px solid #343a40;
+    -webkit-border-radius: 30%;
+    -moz-border-radius: 30%;
+    border-radius: 30%;
+
 }
