@@ -32,11 +32,12 @@
     <meta name="twitter:image" content="img/typewriter.png">
 
 
-
-
     <!--  ICONS   -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/typewriter.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <!--   FONTS   -->
+    <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
 
     <!--   NORMALIZE   -->
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
@@ -54,21 +55,21 @@
 
     <header>
 
-        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        <nav class="navbar fixed-top navbar-expand-lg navbar navbar-dark bg-dark">
             <a class="navbar-brand" href="http://localhost/projet4/public/index.php">Billet simple pour l'Alaska</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="http://localhost/projet4/public/index.php">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Chapitres <span class="sr-only"></span></a>
+                        <a class="nav-link" href="http://localhost/projet4/public/index.php?acces=chapters">Chapitres <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Présentation</a>
+                        <a class="nav-link" href="http://localhost/projet4/public/index.php?acces=presentation">Présentation</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="http://localhost/projet4/public/index.php?acces=contact">Contact</a>
@@ -78,8 +79,8 @@
                             Connectez-vous
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Inscription</a>
-                            <a class="dropdown-item" href="#">Connection</a>
+                            <a class="dropdown-item" href="http://localhost/projet4/public/index.php?acces=subscribe">Inscription</a>
+                            <a class="dropdown-item" href="http://localhost/projet4/public/index.php?acces=connection">Connexion</a>
                         </div>
                     </li>
                 </ul>
@@ -88,11 +89,24 @@
 
     </header>
 
+    <main>
+
 {% block content %}{% endblock %}
+
+    </main>
+
+    <footer>
+
+        <a href="#facebook" title="Facebook"><i class="fab fa-facebook-square fa-4x"></i></a>
+        <a href="#twitter" title="Twitter"><i class="fab fa-twitter-square fa-4x"></i></a>
+        <a href="#instagram" title="Instagram"><i class="fab fa-instagram fa-4x"></i></a>
+
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 
 </body>
 
