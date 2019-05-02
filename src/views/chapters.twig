@@ -1,0 +1,27 @@
+{% extends "layout.twig" %}
+
+
+{% block title %}
+    <title>Intégralité des chapitres</title>
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>Voici tous les chapitres disponibles pour le moment :</h1>
+
+
+    {% for chapter in chapters %}
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ chapter.title }}</h5>
+                <p class="card-text">{{ chapter.content }}</p>
+                <a href="#" class="card-link">Lire plus...</a>
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+{% endblock %}
