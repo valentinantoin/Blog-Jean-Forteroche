@@ -1,0 +1,30 @@
+{% extends "layout.twig" %}
+
+{% block title %}
+
+    <title>Connexion</title>
+
+{% endblock %}
+
+{% block content %}
+
+    <form method="post" action="traitement.php">
+
+        <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="addon-wrapping">Votre Pseudo</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Pseudo" aria-label="Username" aria-describedby="addon-wrapping">
+        </div>
+
+        <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="addon-wrapping">Votre mot de passe</span>
+            </div>
+            <input type="password" class="form-control" placeholder="Mot de passe" aria-label="password" aria-describedby="addon-wrapping">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+
+{% endblock %}
