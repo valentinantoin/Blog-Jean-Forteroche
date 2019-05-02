@@ -1,27 +1,10 @@
 <?php
 
+//autoload
 require "../vendor/autoload.php";
 
+//load chapters model
+require('../src/models/chapters.php');
 
-function chaptersHome() {
-
-    $pdo = new PDO('mysql:dbname=jeanforteroche;host=localhost', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-    $chapters = $pdo->query('SELECT * FROM chapters ORDER BY id DESC LIMIT 3');
-
-    return $chapters;
-}
-
-function chaptersPage() {
-
-    $pdo = new PDO('mysql:dbname=jeanforteroche;host=localhost', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-    $chapters = $pdo->query('SELECT * FROM chapters ORDER BY id ASC');
-
-    return $chapters;
-}
-
-
+//load front controller for routing
 require ("../src/controllers/frontController.php");
