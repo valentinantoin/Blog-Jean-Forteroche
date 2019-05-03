@@ -7,7 +7,7 @@ $twig = new Twig_Environment($loader, [
 ]);
 
 //CREATE CHAPTER OBJECT
-require_once ("../src/models/chapters.php");
+require_once ("../src/models/ChapterManager.php");
 
     $chapterManager = new ChapterManager();
     $lastChapter = $chapterManager->getChapterHome();
@@ -46,6 +46,10 @@ switch ($page) {
 
     case "subscribe" :
         echo $twig->render("subscribe.twig");
+        break;
+
+    case "admin" :
+        echo $twig->render("admin.twig");
         break;
 
     default:
