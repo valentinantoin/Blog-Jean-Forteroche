@@ -1,0 +1,35 @@
+{% extends "layout.twig" %}
+
+{% block title %}
+
+    <title>Espace d'administration</title>
+
+{% endblock %}
+
+{% block content %}
+
+    <h1>Bienvenue dans votre espace d'administration Jean</h1>
+
+    <form method="post" action="traitement.php">
+
+        <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="addon-wrapping">Titre</span>
+            </div>
+            <input type="text" class="form-control" aria-label="title" aria-describedby="addon-wrapping">
+        </div>
+
+            <textarea class="form-control" aria-label="content"></textarea>
+
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+
+    </form>
+
+{% endblock %}
+
+{% block script %}
+
+    <script src="js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({selector:'textarea', language : "fr_FR"});</script>
+
+{% endblock %}
