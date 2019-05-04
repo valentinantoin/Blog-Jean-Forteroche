@@ -36,6 +36,10 @@ switch ($page) {
         echo $twig->render("chapters.twig", ['chapters' => $chapters]);
         break;
 
+    case "chapter" :
+        echo $twig->render("chapter.twig");
+        break;
+
     case "presentation" :
         echo $twig->render("presentation.twig");
         break;
