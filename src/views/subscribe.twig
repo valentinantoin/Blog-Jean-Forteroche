@@ -10,34 +10,34 @@
 
     <h1>Inscivez vous !</h1>
 
-    <form method="post" action="traitement.php">
+    <form method="post" action="../src/controllers/userController.php">
 
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Votre Pseudo</span>
             </div>
-            <input type="text" class="form-control" placeholder="Pseudo" aria-label="Username" aria-describedby="addon-wrapping">
+            <input type="text" class="form-control" placeholder="Pseudo" aria-label="pseudo" name="pseudo" aria-describedby="addon-wrapping">
         </div>
 
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Votre mail</span>
             </div>
-            <input type="text" class="form-control" placeholder="mail" aria-label="mail" aria-describedby="addon-wrapping">
+            <input type="text" class="form-control" placeholder="mail" aria-label="mail" name="mail" aria-describedby="addon-wrapping">
         </div>
 
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Votre mot de passe</span>
             </div>
-            <input type="password" class="form-control" placeholder="Mot de passe" aria-label="password" aria-describedby="addon-wrapping">
+            <input type="password" class="form-control" placeholder="Mot de passe" aria-label="password" name="pass" aria-describedby="addon-wrapping">
         </div>
 
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Confirmez votre mot de passe</span>
             </div>
-            <input type="password" class="form-control" placeholder="Mot de passe" aria-label="password" aria-describedby="addon-wrapping">
+            <input type="password" class="form-control" placeholder="Mot de passe" aria-label="password" name="pass_check" aria-describedby="addon-wrapping">
         </div>
 
         <button type="submit" class="btn btn-primary">Envoyer</button>
