@@ -8,17 +8,18 @@ $pass_unchecked = $_POST["pass"];
 $pass_checked = $_POST["pass_check"];
 
 if ($pass_unchecked == $pass_checked) {
+
     $pass = password_hash($pass_unchecked, PASSWORD_DEFAULT);
+
+    $userManager = new UserManager();
+    $addUser = $userManager->addUser($pseudo, $mail, $pass);
+
+    header('Location: ../../public/index.php?acces=connection');
+
 }else{
     echo "Les passwords ne correspondent pas !";
 }
 
-
-
-$userManager = new UserManager();
-$addUser = $userManager->addUser($pseudo, $mail, $pass);
-
-header('Location: ../../public/index.php?acces=connection');
 
 
 
