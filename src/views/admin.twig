@@ -10,16 +10,16 @@
 
     <h1>Bienvenue dans votre espace d'administration Jean</h1>
 
-    <form method="post" action="traitement.php">
+    <form method="post" action="../src/controllers/chapterController.php">
 
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Titre</span>
             </div>
-            <input type="text" class="form-control" aria-label="title" aria-describedby="addon-wrapping">
+            <input type="text" class="form-control" aria-label="title" name="title" aria-describedby="addon-wrapping">
         </div>
 
-            <textarea class="form-control" aria-label="content"></textarea>
+            <textarea class="form-control" aria-label="content" name="content"></textarea>
 
         <button type="submit" class="btn btn-primary">Envoyer</button>
 
