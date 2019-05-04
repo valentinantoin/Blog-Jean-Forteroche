@@ -3,27 +3,30 @@
 //CREATE PROTOTYPE
 class UserManager {
 
-//CREATE CHAPTER
-    public function addUser($id, $pseudo, $mail, $pass) {
+//CREATE USER
+    public function addUser($pseudo, $mail, $pass) {
 
         $pdo = $this->dbConnect();
-        $newUser = $pdo->prepare('INSERT INTO users(id, pseudo, mail, pass, creation_date) VALUES(?, ?, ?, ?, NOW())');
-        $affectedLines = $newUser->execute(array($id, $pseudo, $mail, $pass));
+        $user = $pdo->prepare('INSERT INTO users(pseudo, mail, pass, creation_date) VALUES( ?, ?, ?, CURRENT_DATE ())');
+        $newUser = $user->execute(array( $pseudo, $mail, $pass ));
 
-        return $affectedLines;
+        return $newUser;
     }
 
-//READ CHAPTER
+//READ USER FROM DB
     public function getUser()
     {
 
         $pdo = $this->dbConnect();
-        $user = $pdo->query('SELECT id, pseudo, mail, pass, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM users ORDER BY id DESC');
+        $user = $pdo->prepare('SELECT id, pass FROM users WHERE pseudo = :pseudo');
+        $user->execute(array(
+            'pseudo' => $pseudo));
+        $validUser = $user->fetch();
 
-        return $user;
+        return $validUser;
     }
 
-//UPDATE CHAPTER
+//UPDATE USER
     public function updateUser($pseudo, $new_pseudo, $new_mail, $new_pass) {
 
         $pdo = $this->dbConnect();
@@ -35,7 +38,7 @@ class UserManager {
         ));
     }
 
-//DELETE CHAPTER
+//DELETE USER
     public function deleteUser($pseudo) {
         $pdo = $this->dbConnect();
         $req = $pdo->prepare('DELETE FROM users WHERE pseudo= :pseudo');
