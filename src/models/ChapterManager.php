@@ -3,14 +3,16 @@
 //CREATE PROTOTYPE
 class ChapterManager {
 
+
+
 //CREATE CHAPTER
-    public function addChapter($id, $title, $content) {
+    public function addChapter($title, $content) {
 
         $pdo = $this->dbConnect();
-        $newChapter = $pdo->prepare('INSERT INTO chapters(id, title, content, creation_date) VALUES(?, ?, ?, NOW())');
-        $affectedLines = $newChapter->execute(array($id, $title, $content));
+        $chapter = $pdo->prepare('INSERT INTO chapters(title, content, creation_date) VALUES(?, ?, NOW())');
+        $newChapter = $chapter->execute(array( $title, $content));
 
-        return $affectedLines;
+        return $newChapter;
     }
 
 //READ CHAPTER
