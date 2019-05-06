@@ -7,8 +7,17 @@
 
 {% block content %}
 
+    {% for chapter in chapter %}
+
     <h1>{{ chapter.title }}</h1>
 
-    <p>{{ chapter.content }}</p>
+    <div class="chapterContent">
+
+        <p>{{ chapter.content }}</p>
+
+    </div>
+
+
+    {% endfor %}
 
 {% endblock %}
