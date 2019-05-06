@@ -11,6 +11,12 @@ body {
 main {
     padding-top: 3rem;
 }
+
+.chapterContent {
+    margin: 1rem;
+    color: blue;
+}
+
 /*---   HEADER   ---*/
 nav > a:first-child{
     margin-left: 0;
