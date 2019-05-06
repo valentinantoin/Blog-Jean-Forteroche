@@ -13,7 +13,7 @@ class UserManager {
         return $newUser;
     }
 
-//READ USER FROM DB
+//READ USER
     public function getUser()
     {
 
