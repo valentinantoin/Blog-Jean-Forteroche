@@ -16,10 +16,11 @@ class ChapterManager {
     }
 
 //READ CHAPTER
-    public function getChapterHome() {
+    public function getLastChapter() {
 
         $pdo = $this->dbConnect();
         $lastChapter = $pdo->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM chapters ORDER BY id DESC LIMIT 1');
+
 
         return $lastChapter;
     }
@@ -30,6 +31,14 @@ class ChapterManager {
         $chapters = $pdo->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters ORDER BY id ASC');
 
         return $chapters;
+    }
+
+    public function getChapter($id) {
+
+        $pdo = $this->dbConnect();
+        $chapter = $pdo->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters WHERE id = '.$id.' ');
+
+        return $chapter;
     }
 
 //UPDATE CHAPTER
