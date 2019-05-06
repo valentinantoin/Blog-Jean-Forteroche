@@ -6,13 +6,6 @@ $twig = new Twig_Environment($loader, [
     'cache' => false
 ]);
 
-//CREATE CHAPTER OBJECT
-require_once ("../src/models/ChapterManager.php");
-
-    $chapterManager = new ChapterManager();
-    $lastChapter = $chapterManager->getChapterHome();
-    $chapters = $chapterManager->getChapterPage();
-
 
 //ROUTING
 $page = 'home';
@@ -25,7 +18,7 @@ if(isset($_GET['acces'])) {
 switch ($page) {
 
     case "home" :
-        echo $twig->render("home.twig", ['chapters' => $lastChapter]);
+        require ("homeController.php");
         break;
 
     case "contact" :
@@ -33,11 +26,11 @@ switch ($page) {
         break;
 
     case "chapters" :
-        echo $twig->render("chapters.twig", ['chapters' => $chapters]);
+        require("chapterListController.php");
         break;
 
     case "chapter" :
-        echo $twig->render("chapter.twig");
+        require("readChapterController.php");
         break;
 
     case "presentation" :
@@ -57,6 +50,6 @@ switch ($page) {
         break;
 
     default:
-        echo $twig->render("home.twig", ['chapters' => $lastChapter]);
+        require ("homeController.php");
         break;
 }
