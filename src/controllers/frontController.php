@@ -22,7 +22,7 @@ switch ($page) {
         break;
 
     case "contact" :
-        echo $twig->render("contact.twig");
+        require ('contactController.php');
         break;
 
     case "chapters" :
@@ -34,19 +34,19 @@ switch ($page) {
         break;
 
     case "presentation" :
-        echo $twig->render("presentation.twig");
+        require ('presentationController.php');
         break;
 
     case "connection" :
-        echo $twig->render("connection.twig");
+        require ('connectionController.php');
         break;
 
     case "subscribe" :
-        echo $twig->render("subscribe.twig");
+        require ('subscribeController.php');
         break;
 
     case "admin" :
-        echo $twig->render("admin.twig");
+        require ('adminController.php');
         break;
 
     default:
