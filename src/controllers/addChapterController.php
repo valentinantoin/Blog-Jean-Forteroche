@@ -8,7 +8,7 @@ $content = $_POST['content'];
 $title = $_POST['title'];
 
 $chapterManager = new ChapterManager();
-require ('../config/dbConnection.php');
+require ('../../config/dbConnection.php');
 $addChapter = $chapterManager->addChapter( $title, $content);
 
 
