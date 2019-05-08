@@ -12,9 +12,9 @@ main {
     padding-top: 3rem;
 }
 
-.chapterContent {
-    margin: 1rem;
-    color: blue;
+p {
+    justify-content: center;
+    margin: 2rem;
 }
 
 /*---   HEADER   ---*/
