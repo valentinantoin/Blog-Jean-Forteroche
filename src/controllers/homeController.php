@@ -4,6 +4,7 @@
 require_once ("../src/models/ChapterManager.php");
 
 $chapterManager = new ChapterManager();
+require ('../config/dbConnection.php');
 $lastChapter = $chapterManager->getLastChapter();
 
 echo $twig->render("home.twig",['chapters' => $lastChapter]);

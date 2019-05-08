@@ -12,6 +12,7 @@ if ($pass_unchecked == $pass_checked) {
     $pass = password_hash($pass_unchecked, PASSWORD_DEFAULT);
 
     $userManager = new UserManager();
+    require ('../config/dbConnection.php');
     $addUser = $userManager->addUser($pseudo, $mail, $pass);
 
     header('Location: ../../public/index.php?acces=connection');
