@@ -18,11 +18,11 @@ if(isset($_GET['acces'])) {
 switch ($page) {
 
     case "home" :
-        /*require ("homeController.php");
+        /*require ("ChapterController.php");
         $chapterController = new ChapterController($twig);
-        $chapterLast = $chapterController->chapterLast();
-        break;*/
+        $chapterLast = $chapterController->chapterLast();*/
         require ("homeController.php");
+        break;
 
     case "contact" :
         require ('contactController.php');

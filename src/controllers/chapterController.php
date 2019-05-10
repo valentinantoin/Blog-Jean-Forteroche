@@ -1,24 +1,11 @@
 <?php
 
-
 require_once ("../src/models/ChapterManager.php");
 require_once ('../config/dbConnection.php');
 
 
 class ChapterController {
 
-    /*public function __construct(\Twig_Environment $twig)
-    {
-        // Stores the Twig engine
-        $this->twig = $twig;
-    }
-
-    public function render( string $view, array $params = [])
-    {
-        // Returns the rendering of the view
-        return $this->twig->render($view, $params);
-    }
-*/
 
     public function chapterList() {
 
