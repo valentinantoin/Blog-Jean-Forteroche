@@ -1,6 +1,7 @@
 <?php
 
 use App\models\ChapterManager;
+use App\models\CommentManager;
 
 class ChapterController {
 
@@ -33,8 +34,10 @@ class ChapterController {
         $id = $_GET['id'];
         $chapterManager = new ChapterManager();
         $chapter = $chapterManager->getChapter($id);
+        $commentManager = new CommentManager();
+        $comments = $commentManager->getComment($id);
 
-        echo $this->render("chapter.twig",['chapter' => $chapter]);
+        echo $this->render("chapter.twig",['chapter' => $chapter, 'comments' => $comments]);
 
     }
 
@@ -49,16 +52,13 @@ class ChapterController {
 
     public function chapterAdd() {
 
-
         $content = $_POST['content'];
         $title = $_POST['title'];
-
 
         $chapterManager = new ChapterManager();
         $addChapter = $chapterManager->addChapter( $title, $content);
 
         echo $this->render("home.twig",['chapters' => $addChapter]);
-
 
     }
 }
