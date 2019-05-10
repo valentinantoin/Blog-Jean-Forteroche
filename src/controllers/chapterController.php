@@ -1,10 +1,24 @@
 <?php
 
-require_once ("../src/models/ChapterManager.php");
+use App\models\ChapterManager;
 require_once ('../config/dbConnection.php');
 
 
 class ChapterController {
+
+    private $twig;
+
+    public function __construct(\Twig_Environment $twig)
+    {
+        // Stores the Twig engine
+        $this->twig = $twig;
+    }
+
+    public function render( $view, array $params = [])
+    {
+        // Returns the rendering of the view
+        return $this->twig->render($view, $params);
+    }
 
 
     public function chapterList() {
@@ -12,7 +26,7 @@ class ChapterController {
         $chapterManager = new ChapterManager();
         $chapters = $chapterManager->getChapterPage();
 
-        echo $twig->render("chapters.twig",['chapters' => $chapters]);
+        echo $this->render("chapters.twig",['chapters' => $chapters]);
 
     }
 
@@ -22,7 +36,7 @@ class ChapterController {
         $chapterManager = new ChapterManager();
         $chapter = $chapterManager->getChapter($id);
 
-        echo $twig->render("chapter.twig",['chapter' => $chapter]);
+        echo $this->render("chapter.twig",['chapter' => $chapter]);
 
     }
 
@@ -31,7 +45,7 @@ class ChapterController {
         $chapterManager = new ChapterManager();
         $lastChapter = $chapterManager->getLastChapter();
 
-        echo $twig->render("home.twig",['chapters' => $lastChapter]);
+        echo $this->render("home.twig",['chapters' => $lastChapter]);
 
     }
 
@@ -44,7 +58,7 @@ class ChapterController {
         $chapterManager = new ChapterManager();
         $addChapter = $chapterManager->addChapter( $title, $content);
 
-        echo $twig->render("home.twig",['chapters' => $addChapter]);
+        echo $this->render("home.twig",['chapters' => $addChapter]);
 
     }
 }
