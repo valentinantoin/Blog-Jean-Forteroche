@@ -24,7 +24,7 @@ class CommentController {
         $commentManager = new CommentManager();
         $comments = $commentManager->getComment($id);
 
-        echo $this->render("chapter.twig",['comments' => $comments]);
+        echo $this->render("chapter.twig",['comments' => $comments]); //FUNCTION CALL IN CHAPTERCONTROLLER !!!
 
     }
 }
