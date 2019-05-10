@@ -1,8 +1,6 @@
 <?php
 
 use App\models\ChapterManager;
-require_once ('../config/dbConnection.php');
-
 
 class ChapterController {
 
@@ -55,10 +53,12 @@ class ChapterController {
         $content = $_POST['content'];
         $title = $_POST['title'];
 
+
         $chapterManager = new ChapterManager();
         $addChapter = $chapterManager->addChapter( $title, $content);
 
         echo $this->render("home.twig",['chapters' => $addChapter]);
+
 
     }
 }
