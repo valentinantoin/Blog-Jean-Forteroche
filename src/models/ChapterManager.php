@@ -3,7 +3,7 @@
 
 namespace App\models;
 
-require ("../config/dbConnection.php");
+require_once ("../config/dbConnection.php");
 
 //CREATE PROTOTYPE
 class ChapterManager
@@ -49,10 +49,10 @@ class ChapterManager
     }
 
 //UPDATE CHAPTER
-    public function updateChapter()
+    public function updateChapter($title, $new_content)
     {
 
-        $pdo = dbConnect($title, $new_content);
+        $pdo = dbConnect();
         $req = $pdo->prepare('UPDATE chapters SET content = :new_content, creation_date = NOW() WHERE titlte =:title');
         $req->execute(array('new_content' => $new_content,
             'title' => $title
@@ -64,6 +64,6 @@ class ChapterManager
     {
         $pdo = dbConnect();
         $req = $pdo->prepare('DELETE FROM chapters WHERE title= :title');
-        $req->execute(array('title' => $title));
+        $req->execute(array($title));
     }
 }
