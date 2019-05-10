@@ -28,11 +28,15 @@ switch ($page) {
         break;
 
     case "chapters" :
-        require("chapterListController.php");
+        require ("ChapterController.php");
+        $chapterController = new ChapterController($twig);
+        $chapterLast = $chapterController->chapterList();
         break;
 
     case "chapter" :
-        require("readChapterController.php");
+        require ("ChapterController.php");
+        $chapterController = new ChapterController($twig);
+        $chapterLast = $chapterController->chapterRead();
         break;
 
     case "presentation" :
@@ -52,6 +56,8 @@ switch ($page) {
         break;
 
     default:
-        require ("homeController.php");
+        require ("ChapterController.php");
+        $chapterController = new ChapterController($twig);
+        $chapterLast = $chapterController->chapterLast();
         break;
 }
