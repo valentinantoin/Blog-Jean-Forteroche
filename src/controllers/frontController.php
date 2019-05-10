@@ -35,8 +35,11 @@ switch ($page) {
 
     case "chapter" :
         require ("ChapterController.php");
+        require ("CommentController.php");
         $chapterController = new ChapterController($twig);
         $chapterLast = $chapterController->chapterRead();
+        $commentController = new CommentController($twig);
+        $commentList = $commentController->commentList();
         break;
 
     case "presentation" :
