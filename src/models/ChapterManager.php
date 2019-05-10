@@ -3,6 +3,8 @@
 
 namespace App\models;
 
+require ("../config/dbConnection.php");
+
 //CREATE PROTOTYPE
 class ChapterManager
 {
