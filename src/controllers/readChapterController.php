@@ -2,8 +2,7 @@
 
 $id = $_GET['id'];
 
-//CREATE CHAPTER OBJECT
-require_once ("../src/models/ChapterManager.php");
+use App\models\ChapterManager;
 
 
 

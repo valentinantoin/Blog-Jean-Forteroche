@@ -1,6 +1,6 @@
 <?php
 
-require ("../models/userManager.php");
+use App\models\UserManager;
 
 $pseudo = $_POST["pseudo"];
 $mail = $_POST["mail"];

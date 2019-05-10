@@ -1,7 +1,7 @@
 <?php
 
 //CREATE CHAPTER OBJECT
-require_once ("../src/models/ChapterManager.php");
+use App\models\ChapterManager;
 
 $chapterManager = new ChapterManager();
 require ('../config/dbConnection.php');

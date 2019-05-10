@@ -1,5 +1,8 @@
 <?php
 
+
+namespace App\models;
+
 //CREATE PROTOTYPE
 class ChapterManager
 {

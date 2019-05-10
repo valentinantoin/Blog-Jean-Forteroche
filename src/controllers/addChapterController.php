@@ -1,7 +1,7 @@
 <?php
 
 
-require ("../models/ChapterManager.php");
+use App\models\ChapterManager;
 
 
 $content = $_POST['content'];
