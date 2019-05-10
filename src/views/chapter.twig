@@ -21,3 +21,22 @@
     {% endfor %}
 
 {% endblock %}
+
+
+{% block comments %}
+
+    {% for comment in comments %}
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Posté par : {{ comment.user_pseudo }}</h5>
+                <h6 class="card-text">Le {{ comment.creation_date_fr }}</h6>
+                <p class="card-text">{{ comment.content }}</p>
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+
+{% endblock %}
