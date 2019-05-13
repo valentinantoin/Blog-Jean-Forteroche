@@ -3,6 +3,7 @@
 use App\models\ChapterManager;
 use App\models\CommentManager;
 
+
 class ChapterController {
 
     private $twig;
@@ -52,11 +53,13 @@ class ChapterController {
 
     public function chapterAdd() {
 
-        $content = $_POST['content'];
+        echo $this->render("admin.twig");
+
         $title = $_POST['title'];
+        $content = $_POST['content'];
 
         $chapterManager = new ChapterManager();
-        $addChapter = $chapterManager->addChapter( $title, $content);
+        $addChapter = $chapterManager->addChapter($title, $content);
 
         echo $this->render("home.twig",['chapters' => $addChapter]);
 
