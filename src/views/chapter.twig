@@ -1,9 +1,7 @@
 {% extends "layout.twig" %}
 
 
-{% block title %}
-    <title>{{ chapter.title }}</title>
-{% endblock %}
+{% block title %} {{ chapter.title }} {% endblock %}
 
 {% block content %}
 
@@ -36,6 +34,19 @@
         </div>
 
     {% endfor %}
+
+    <form method="post" action="../src/controllers/CommentController.php">
+
+        <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="addon-wrapping">Ajoutez un commentaire</span>
+            </div>
+            <textarea class="form-control" placeholder="Votre commentaire" aria-label="comment" name="comment" aria-describedby="addon-wrapping">
+            </textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
 
 
 

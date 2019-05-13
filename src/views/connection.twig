@@ -1,29 +1,25 @@
 {% extends "layout.twig" %}
 
-{% block title %}
-
-    <title>Connexion</title>
-
-{% endblock %}
+{% block title %} Connexion {% endblock %}
 
 {% block content %}
 
     <h1>Connectez vous</h1>
 
-    <form method="post" action="../src/controllers/userController.php">
+    <form method="post" action="../src/controllers/connectionController.php">
 
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Votre Pseudo</span>
             </div>
-            <input type="text" class="form-control" placeholder="Pseudo" aria-label="Username" aria-describedby="addon-wrapping">
+            <input type="text" class="form-control" placeholder="Pseudo" aria-label="Username" name="pseudo" aria-describedby="addon-wrapping">
         </div>
 
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Votre mot de passe</span>
             </div>
-            <input type="password" class="form-control" placeholder="Mot de passe" aria-label="password" aria-describedby="addon-wrapping">
+            <input type="password" class="form-control" placeholder="Mot de passe" aria-label="password" name="pass" aria-describedby="addon-wrapping">
         </div>
 
         <button type="submit" class="btn btn-primary">Envoyer</button>
