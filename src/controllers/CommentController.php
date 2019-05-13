@@ -27,4 +27,18 @@ class CommentController {
         echo $this->render("chapter.twig",['comments' => $comments]); //FUNCTION CALL IN CHAPTERCONTROLLER !!!
 
     }
+
+    public function addComment() {
+
+        $id = $_GET['id'];
+        $content = $_POST['content'];
+        $commentManager = new CommentManager();
+        $commentManager->addComment($id, $_SESSION['pseudo'], $content);
+
+        header('Location: ../../public/index.php?acces=chpter&id='. $id .'');
+
+
+
+    }
+
 }
