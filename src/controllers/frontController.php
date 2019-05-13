@@ -1,9 +1,10 @@
 <?php
 
+
 //TEMPLATES PREPARATION
 $loader = new Twig_Loader_Filesystem( '..\src\views');
 $twig = new Twig_Environment($loader, [
-    'cache' => false
+    'cache' => false,
 ]);
 
 
@@ -34,8 +35,6 @@ switch ($page) {
         require ("CommentController.php");
         $chapterController = new ChapterController($twig);
         $chapterLast = $chapterController->chapterRead();
-        //$commentController = new CommentController($twig);
-        //$commentList = $commentController->commentList();
         break;
 
     case "presentation" :
@@ -43,7 +42,7 @@ switch ($page) {
         break;
 
     case "connection" :
-        require ('connectionController.php');
+        require('connectionView.php');
         break;
 
     case "subscribe" :
@@ -52,6 +51,9 @@ switch ($page) {
 
     case "admin" :
         require ('adminController.php');
+        //require ('ChapterController.php');
+        //$chapterController = new ChapterController($twig);
+        //$chapterLast = $chapterController->chapterAdd();
         break;
 
     default:
