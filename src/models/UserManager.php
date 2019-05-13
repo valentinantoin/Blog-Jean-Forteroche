@@ -2,13 +2,18 @@
 
 namespace App\models;
 
+use config\DbConnection;
+require ('../../config/DbConnection.php');
+
+
 //CREATE PROTOTYPE
 class UserManager {
 
 //CREATE USER
     public function addUser($pseudo, $mail, $pass) {
 
-        $pdo = dbConnect();
+        $dbConnection = new DbConnection();
+        $pdo = $dbConnection->dbConnect();
         $user = $pdo->prepare('INSERT INTO users(pseudo, mail, pass, creation_date) VALUES( ?, ?, ?, CURRENT_DATE ())');
         $newUser = $user->execute(array( $pseudo, $mail, $pass ));
 
@@ -16,22 +21,22 @@ class UserManager {
     }
 
 //READ USER
-    public function getUser()
+    public function getUser($pseudo)
     {
 
-        $pdo = dbConnect();
-        $user = $pdo->prepare('SELECT id, pass FROM users WHERE pseudo = :pseudo');
-        $user->execute(array(
-            'pseudo' => $pseudo));
-        $validUser = $user->fetch();
+        $dbConnection = new DbConnection();
+        $pdo = $dbConnection->dbConnect();
+        $user = $pdo->prepare('SELECT pass FROM users WHERE pseudo = ? ');
+        $userPass = $user->execute(array($pseudo));
 
-        return $validUser;
+        return $userPass;
     }
 
 //UPDATE USER
     public function updateUser($pseudo, $new_pseudo, $new_mail, $new_pass) {
 
-        $pdo = dbConnect();
+        $dbConnection = new DbConnection();
+        $pdo = $dbConnection->dbConnect();
         $req = $pdo->prepare('UPDATE users SET pseudo = :new_pseudo, mail = :new_mail, pass = :new_pass, creation_date = NOW() WHERE pseudo = :pseudo');
         $req->execute(array('new_pseudo' => $new_pseudo,
             'new_mail' => $new_mail,
@@ -43,7 +48,8 @@ class UserManager {
 //DELETE USER
     public function deleteUser($pseudo) {
 
-        $pdo = dbConnect();
+        $dbConnection = new DbConnection();
+        $pdo = $dbConnection->dbConnect();
         $req = $pdo->prepare('DELETE FROM users WHERE pseudo= :pseudo');
         $req->execute(array('pseudo' => $pseudo));
     }

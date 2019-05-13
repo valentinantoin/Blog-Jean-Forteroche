@@ -1,9 +1,8 @@
 <?php
 
-
 namespace App\models;
 
-require_once ("../config/dbConnection.php");
+use config\DbConnection;
 
 //CREATE PROTOTYPE
 class ChapterManager
@@ -12,8 +11,8 @@ class ChapterManager
 //CREATE CHAPTER
     public function addChapter($title, $content)
     {
-
-        $pdo = dbConnect();
+        $dbConnection = new DbConnection();
+        $pdo = $dbConnection->dbConnect();
         $chapter = $pdo->prepare('INSERT INTO chapters(title, content, creation_date) VALUES(?, ?, NOW())');
         $newChapter = $chapter->execute(array($title, $content));
 
@@ -24,7 +23,8 @@ class ChapterManager
     public function getLastChapter()
     {
 
-        $pdo = dbConnect();
+        $dbConnection = new DbConnection();
+        $pdo = $dbConnection->dbConnect();
         $lastChapter = $pdo->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM chapters ORDER BY id DESC LIMIT 1');
 
 
@@ -33,7 +33,8 @@ class ChapterManager
 
     public function getChapterPage()
     {
-        $pdo = dbConnect();
+        $dbConnection = new DbConnection();
+        $pdo = $dbConnection->dbConnect();
         $chapters = $pdo->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters ORDER BY id ASC');
 
         return $chapters;
@@ -42,7 +43,8 @@ class ChapterManager
     public function getChapter($id)
     {
 
-        $pdo = dbConnect();
+        $dbConnection = new DbConnection();
+        $pdo = $dbConnection->dbConnect();
         $chapter = $pdo->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters WHERE id = ' . $id . ' ');
 
         return $chapter;
@@ -52,7 +54,8 @@ class ChapterManager
     public function updateChapter($title, $new_content)
     {
 
-        $pdo = dbConnect();
+        $dbConnection = new DbConnection();
+        $pdo = $dbConnection->dbConnect();
         $req = $pdo->prepare('UPDATE chapters SET content = :new_content, creation_date = NOW() WHERE titlte =:title');
         $req->execute(array('new_content' => $new_content,
             'title' => $title
@@ -62,7 +65,8 @@ class ChapterManager
 //DELETE CHAPTER
     public function deleteChapter($title)
     {
-        $pdo = dbConnect();
+        $dbConnection = new DbConnection();
+        $pdo = $dbConnection->dbConnect();
         $req = $pdo->prepare('DELETE FROM chapters WHERE title= :title');
         $req->execute(array($title));
     }
