@@ -2,7 +2,7 @@
 
 
 //TEMPLATES PREPARATION
-$loader = new Twig_Loader_Filesystem( '..\src\views');
+$loader = new Twig_Loader_Filesystem( '../src/views');
 $twig = new Twig_Environment($loader, [
     'cache' => false,
 ]);
