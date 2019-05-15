@@ -5,18 +5,15 @@
 
 {% block content %}
 
-    {% for chapter in chapter %}
 
-    <h1>{{ chapter.title }}</h1>
+    <h1>{{ chapter.title | nl2br}}</h1>
 
     <div class="chapterContent">
 
-        <p>{{ chapter.content }}</p>
+        <p>{{ chapter.content | nl2br}}</p>
 
     </div>
 
-
-    {% endfor %}
 
 {% endblock %}
 
@@ -35,19 +32,21 @@
 
     {% endfor %}
 
-    <form method="post" action="../src/controllers/CommentController.php">
+
+    {% if session.pseudo is defined %}
+
+    <form method="post" action="http://localhost/blog/public/index.php?acces=postcom&id={{ chapter.id }}">
 
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Ajoutez un commentaire</span>
             </div>
-            <textarea class="form-control" placeholder="Votre commentaire" aria-label="comment" name="comment" aria-describedby="addon-wrapping">
-            </textarea>
+            <textarea class="form-control" aria-label="comment" name="comment" aria-describedby="addon-wrapping" rows="4" cols ="20" required></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Envoyer</button>
     </form>
 
-
+    {% endif %}
 
 {% endblock %}
