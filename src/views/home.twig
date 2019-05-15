@@ -2,6 +2,7 @@
 
 {% block title %} Bienvenue sur le blog de Jean ! {% endblock %}
 
+
 {% block content %}
 
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
@@ -21,20 +22,18 @@
     <h1>Voici le dernier chapitre publié : </h1>
 
 
-{% for chapter in chapters %}
-
     <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">{{ chapter.title }}</h5>
+        <section class="card-body">
+            <h5 class="card-title">{{ chapter.title | nl2br}}</h5>
             <h6 class="card-text">{{ chapter.creation_date_fr }}</h6>
-            <p class="card-text">{{ chapter.content | striptags}}</p>
-            <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=chapter&id={{ chapter.id }}" class="card-link">Lire plus...</a>
-        </div>
+            <p class="card-text">{{ chapter.content | nl2br}}</p>
+            <a href="http://localhost/blog/public/index.php?acces=chapter&id={{ chapter.id }}" class="card-link">Lire plus...</a>
+        </section>
     </div>
 
 
 
-{% endfor %}
+
 
 
 {% endblock %}
