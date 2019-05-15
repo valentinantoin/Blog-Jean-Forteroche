@@ -1,4 +1,3 @@
-<?php session_start();?>
 <!doctype html>
 <html lang="fr">
 <!--   HEAD   -->
@@ -57,34 +56,45 @@
     <header>
 
         <nav class="navbar fixed-top navbar-expand-lg navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="https://jeanforteroche.valentin-antoin.fr/index.php">Billet simple pour l'Alaska</a>
+            <a class="navbar-brand" href="http://localhost/blog/public/index.php">Billet simple pour l'Alaska</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="https://jeanforteroche.valentin-antoin.fr/index.php">Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="http://localhost/blog/public/index.php">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=chapters">Chapitres <span class="sr-only"></span></a>
+                        <a class="nav-link" href="http://localhost/blog/public/index.php?acces=chapters">Chapitres <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=presentation">Présentation</a>
+                        <a class="nav-link" href="http://localhost/blog/public/index.php?acces=presentation">Présentation</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Connectez-vous
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=subscribe">Inscription</a>
-                            <a class="dropdown-item" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=connection">Connexion</a>
+                            <a class="dropdown-item" href="http://localhost/blog/public/index.php?acces=subscribe">Inscription</a>
+                            <a class="dropdown-item" href="http://localhost/blog/public/index.php?acces=connection">Connexion</a>
                         </div>
                     </li>
+                    {% if session.admin is defined %}
                     <li class="nav-item">
-                        <a class="nav-link" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin">Admin</a>
+                        <a class="nav-link" href="http://localhost/blog/public/index.php?acces=admin">Admin</a>
+                    </li>
+                    {% endif %}
+
+                    {% if session.pseudo is defined %}
+                    <li>
+                    <a class="nav-link" href="http://localhost/blog/public/index.php?acces=disconnect">Se déconnecter</a>
                     </li>
                 </ul>
+                <span class="navbar-text">
+                          -- Bonjour {{ session.pseudo }} --
+                </span>
+                {% endif %}
             </div>
         </nav>
 
@@ -95,8 +105,6 @@
         {% block content %}{% endblock %}
 
         {% block comments %}{% endblock %}
-
-
 
     </main>
 
