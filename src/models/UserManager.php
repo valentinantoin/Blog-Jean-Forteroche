@@ -1,6 +1,6 @@
 <?php
 
-namespace App\models;
+namespace App\Models;
 
 use Config\DbConnection;
 use \PDO;
@@ -16,7 +16,7 @@ class UserManager {
 
         $dbConnection = new DbConnection();
         $pdo = $dbConnection->dbConnect();
-        $user = $pdo->prepare('INSERT INTO users(pseudo, mail, pass, creation_date) VALUES( ?, ?, ?, CURRENT_DATE ())');
+        $user = $pdo->prepare('INSERT IGNORE INTO users(pseudo, mail, pass, creation_date) VALUES( ?, ?, ?, CURRENT_DATE ())');
         $newUser = $user->execute(array( $pseudo, $mail, $pass ));
 
         return $newUser;
