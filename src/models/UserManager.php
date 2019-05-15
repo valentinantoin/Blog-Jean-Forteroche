@@ -2,8 +2,10 @@
 
 namespace App\models;
 
-use config\DbConnection;
-require ('../../config/DbConnection.php');
+use Config\DbConnection;
+use \PDO;
+
+require ('../config/DbConnection.php');
 
 
 //CREATE PROTOTYPE
@@ -26,10 +28,12 @@ class UserManager {
 
         $dbConnection = new DbConnection();
         $pdo = $dbConnection->dbConnect();
-        $user = $pdo->prepare('SELECT pass FROM users WHERE pseudo = ? ');
-        $userPass = $user->execute(array($pseudo));
+        $req = $pdo->prepare('SELECT pseudo, pass FROM users WHERE pseudo = ? ');
+        $req->execute(array($pseudo));
 
-        return $userPass;
+        $user = $req->fetch(PDO::FETCH_ASSOC);
+
+        return $user;
     }
 
 //UPDATE USER

@@ -1,9 +1,9 @@
 <?php
 
 
-namespace App\models;
+namespace App\Models;
 
-use config\DbConnection;
+use Config\DbConnection;
 
 //CREATE PROTOTYPE
 class CommentManager {
@@ -13,8 +13,8 @@ class CommentManager {
     {
         $dbConnection = new DbConnection();
         $pdo = $dbConnection->dbConnect();
-        $comment = $pdo->prepare('INSERT INTO comments (chapter_id, user_pseudo, content, creation_date) VALUES(?, ?, ?, NOW())');
-        $newComment = $comment->execute(array($chapter_id, $user_pseudo, $content));
+        $req = $pdo->prepare('INSERT INTO comments (chapter_id, user_pseudo, content, creation_date) VALUES( ?, ?, ?, CURRENT_TIME ())');
+        $newComment = $req->execute(array($chapter_id, $user_pseudo, $content));
 
         return $newComment;
     }
@@ -24,7 +24,9 @@ class CommentManager {
     {
         $dbConnection = new DbConnection();
         $pdo = $dbConnection->dbConnect();
-        $comment = $pdo->query('SELECT id, user_pseudo, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%mm \') AS creation_date_fr FROM comments WHERE chapter_id = ' . $id . ' ');
+        $req = $pdo->prepare('SELECT id, user_pseudo, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i \') AS creation_date_fr FROM comments WHERE chapter_id = ' . $id . ' ORDER BY creation_date');
+        $req->execute();
+        $comment = $req->fetchAll();
 
         return $comment;
     }
@@ -36,6 +38,8 @@ class CommentManager {
         $pdo = $dbConnection->dbConnect();
         $req = $pdo->prepare('UPDATE comments SET content ='.$new_content.', creation_date = NOW() WHERE id ='.$id.'');
         $req->execute(array($new_content, $id));
+
+        return $req;
     }
 
     //DELETE COMMENT
@@ -45,5 +49,7 @@ class CommentManager {
         $pdo = $dbConnection->dbConnect();
         $req = $pdo->prepare('DELETE FROM comments WHERE id='.$id.'');
         $req->execute(array($id));
+
+        return $req;
     }
 }

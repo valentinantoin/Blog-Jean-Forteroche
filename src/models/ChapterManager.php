@@ -1,10 +1,10 @@
 <?php
 
-namespace App\models;
+namespace App\Models;
 
-use config\DbConnection;
+use Config\DbConnection;
 
-//CREATE PROTOTYPE
+
 class ChapterManager
 {
 
@@ -13,8 +13,8 @@ class ChapterManager
     {
         $dbConnection = new DbConnection();
         $pdo = $dbConnection->dbConnect();
-        $chapter = $pdo->prepare('INSERT INTO chapters(title, content, creation_date) VALUES(?, ?, NOW())');
-        $newChapter = $chapter->execute(array($title, $content));
+        $req = $pdo->prepare('INSERT INTO chapters(title, content, creation_date) VALUES(?, ?, NOW())');
+        $newChapter = $req->execute(array($title, $content));
 
         return $newChapter;
     }
@@ -22,11 +22,11 @@ class ChapterManager
 //READ CHAPTER
     public function getLastChapter()
     {
-
         $dbConnection = new DbConnection();
         $pdo = $dbConnection->dbConnect();
-        $lastChapter = $pdo->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM chapters ORDER BY id DESC LIMIT 1');
-
+        $req = $pdo->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM chapters ORDER BY id DESC LIMIT 1');
+        $req->execute();
+        $lastChapter = $req->fetch();
 
         return $lastChapter;
     }
@@ -35,7 +35,9 @@ class ChapterManager
     {
         $dbConnection = new DbConnection();
         $pdo = $dbConnection->dbConnect();
-        $chapters = $pdo->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters ORDER BY id ASC');
+        $req = $pdo->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters ORDER BY id ASC');
+        $req->execute();
+        $chapters = $req->fetchAll();
 
         return $chapters;
     }
@@ -45,8 +47,9 @@ class ChapterManager
 
         $dbConnection = new DbConnection();
         $pdo = $dbConnection->dbConnect();
-        $chapter = $pdo->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters WHERE id = ' . $id . ' ');
-
+        $req = $pdo->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters WHERE id = ' . $id . ' ');
+        $req->execute();
+        $chapter = $req->fetch();
         return $chapter;
     }
 
