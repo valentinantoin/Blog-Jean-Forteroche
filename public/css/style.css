@@ -6,6 +6,7 @@ body {
 
 .card {
     font-family: sofia;
+    width: 80%;
 }
 
 main {
@@ -16,6 +17,13 @@ p {
     justify-content: center;
     margin: 2rem;
 }
+
+.error {
+    width: 100%;
+    justify-content: center;
+    font-size: 2rem;
+}
+
 
 /*---   HEADER   ---*/
 nav > a:first-child{
