@@ -1,8 +1,8 @@
 <?php
 
 use App\Controllers\Controller;
-use App\models\ChapterManager;
-use App\models\CommentManager;
+use App\Models\ChapterManager;
+use App\Models\CommentManager;
 
 
 class ChapterController extends Controller {

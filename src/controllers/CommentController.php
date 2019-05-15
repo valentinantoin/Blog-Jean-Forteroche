@@ -1,7 +1,7 @@
 <?php
 
-use App\Controllers\controller;
-use App\models\CommentManager;
+use App\Controllers\Controller;
+use App\Models\CommentManager;
 use App\Models\ChapterManager;
 
 class CommentController extends Controller {

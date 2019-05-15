@@ -1,8 +1,8 @@
 <?php
 
 
-use App\models\UserManager;
-use App\controllers\Controller;
+use App\Models\UserManager;
+use App\Controllers\Controller;
 
 
 class UserController extends Controller {
