@@ -6,7 +6,7 @@
 
     <h1>Bienvenue dans votre espace d'administration Jean</h1>
 
-    <form method="post" action="./src/controllers/addChapterController.php">
+    <form method="post" action="http://localhost/blog/public/index.php?acces=postchap">
 
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
@@ -17,7 +17,7 @@
 
             <textarea class="form-control" aria-label="content" name="content"></textarea>
 
-        <button type="submit" class="btn btn-primary">Envoyer</button>
+       <button type="submit" class="btn btn-primary">Envoyer</button>
 
     </form>
 
@@ -26,7 +26,13 @@
 {% block script %}
 
     <script src="js/tinymce/tinymce.min.js"></script>
-    <script>tinymce.init({selector:'textarea', language : "fr_FR"});</script>
+    <script>tinymce.init({
+            selector:'textarea',
+            language : "fr_FR",
+            forced_root_block : false,
+            force_br_newlines : true,
+            force_p_newlines : false}
+        );</script>
 
 {% endblock %}
 
