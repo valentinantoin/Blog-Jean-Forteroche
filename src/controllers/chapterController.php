@@ -1,24 +1,11 @@
 <?php
 
+use App\Controllers\Controller;
 use App\models\ChapterManager;
 use App\models\CommentManager;
 
 
-class ChapterController {
-
-    private $twig;
-
-    public function __construct(\Twig_Environment $twig)
-    {
-        // Stores the Twig engine
-        $this->twig = $twig;
-    }
-
-    public function render( $view, array $params = [])
-    {
-        // Returns the rendering of the view
-        return $this->twig->render($view, $params);
-    }
+class ChapterController extends Controller {
 
 
     public function chapterList() {
@@ -27,7 +14,6 @@ class ChapterController {
         $chapters = $chapterManager->getChapterPage();
 
         echo $this->render("chapters.twig",['chapters' => $chapters]);
-
     }
 
     public function chapterRead() {
@@ -39,29 +25,25 @@ class ChapterController {
         $comments = $commentManager->getComment($id);
 
         echo $this->render("chapter.twig",['chapter' => $chapter, 'comments' => $comments]);
-
     }
 
     public function chapterLast() {
 
         $chapterManager = new ChapterManager();
-        $lastChapter = $chapterManager->getLastChapter();
+        $chapterLast = $chapterManager->getLastChapter();
 
-        echo $this->render("home.twig",['chapters' => $lastChapter]);
-
+        echo $this->render("home.twig",['chapter' => $chapterLast]);
     }
 
     public function chapterAdd() {
-
-        echo $this->render("admin.twig");
 
         $title = $_POST['title'];
         $content = $_POST['content'];
 
         $chapterManager = new ChapterManager();
-        $addChapter = $chapterManager->addChapter($title, $content);
+        $chapterManager->addChapter($title, $content);
+        $chapterLast =$chapterManager->getLastChapter();
 
-        echo $this->render("home.twig",['chapters' => $addChapter]);
-
+        echo $this->render("home.twig",['chapter' => $chapterLast]);
     }
 }

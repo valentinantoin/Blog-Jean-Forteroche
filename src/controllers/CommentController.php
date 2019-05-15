@@ -1,22 +1,11 @@
 <?php
 
+use App\Controllers\controller;
 use App\models\CommentManager;
+use App\Models\ChapterManager;
 
-class CommentController {
+class CommentController extends Controller {
 
-    private $twig;
-
-    public function __construct(\Twig_Environment $twig)
-    {
-        // Stores the Twig engine
-        $this->twig = $twig;
-    }
-
-    public function render( $view, array $params = [])
-    {
-        // Returns the rendering of the view
-        return $this->twig->render($view, $params);
-    }
 
     public function commentList() {
 
@@ -31,13 +20,19 @@ class CommentController {
     public function addComment() {
 
         $id = $_GET['id'];
-        $content = $_POST['content'];
+        $chapter_id = $id;
+        $user_pseudo = $_SESSION['pseudo'];
+        $content = $_POST['comment'];
+
+
         $commentManager = new CommentManager();
-        $commentManager->addComment($id, $_SESSION['pseudo'], $content);
+        $commentManager->addComment($chapter_id, $user_pseudo, $content);
+        $comments = $commentManager->getComment($id);
 
-        header('Location: ../../public/index.php?acces=chpter&id='. $id .'');
+        $chapterManager = new ChapterManager();
+        $chapter = $chapterManager->getChapter($id);
 
-
+        echo $this->render("chapter.twig",['chapter' => $chapter, 'comments' => $comments]);
 
     }
 
