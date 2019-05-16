@@ -2,4 +2,4 @@
 vendor/
 tinymce/
 img/
-config/
+config/\DbConnection.php
