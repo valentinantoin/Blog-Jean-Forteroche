@@ -2,7 +2,7 @@
 
 
 //TEMPLATES PREPARATION
-$loader = new Twig_Loader_Filesystem( '..\src\views');
+$loader = new Twig_Loader_Filesystem( '../src/views');
 $twig = new Twig_Environment($loader, [
     'cache' => false,
     'debug' => true,
@@ -43,23 +43,30 @@ switch ($page) {
         break;
 
     case "presentation" :
-        require ('presentationController.php');
+        require ('ServiceController.php');
+        $serviceController = new ServiceController($twig);
+        $serviceController->presentationLoad();
         break;
 
     case "connection" :
-        require('connectionView.php');
+        require ('ServiceController.php');
+        $serviceController = new ServiceController($twig);
+        $serviceController->connectionLoad();
         break;
 
     case "disconnect" :
-        session_destroy();
-        header('Location: ../public/index.php');
+        require ('ServiceController.php');
+        $serviceController = new ServiceController($twig);
+        $serviceController->disconnection();
         break;
 
     case "subscribe" :
-        require ('subscribeController.php');
+        require ('ServiceController.php');
+        $serviceController = new ServiceController($twig);
+        $serviceController->subscribeLoad();
         break;
 
-   case "postsubscribe" :
+    case "postsubscribe" :
         require ('UserController.php');
         $userController = new UserController($twig);
         $addUser = $userController->subscribe();
@@ -83,8 +90,16 @@ switch ($page) {
         $addComment = $commentController->addComment();
         break;
 
+    case "reportcom" :
+        require ('CommentController.php');
+        $commentController = new CommentController($twig);
+        $reportComment = $commentController->reportComment();
+        break;
+
     case "admin" :
-        require ('adminController.php');
+        require ('ServiceController.php');
+        $serviceController = new ServiceController($twig);
+        $adminPage = $serviceController->AdminLoad();
         break;
 
     default:

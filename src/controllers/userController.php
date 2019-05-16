@@ -2,7 +2,9 @@
 
 
 use App\Models\UserManager;
+require_once ('../src/models/UserManager.php');
 use App\Controllers\Controller;
+require_once ('../src/controllers/Controller.php');
 
 
 class UserController extends Controller {
@@ -22,7 +24,7 @@ class UserController extends Controller {
             $userManager->addUser($pseudo, $mail, $pass);
 
 
-            header('Location: ../public/index.php?acces=connection');
+            header('Location: ../index.php?acces=connection');
 
         }else{
 
@@ -45,13 +47,13 @@ class UserController extends Controller {
             session_start();
             $_SESSION['pseudo'] = $pseudo;
 
-            if($pseudo == 'Jean' || $pseudo == 'Val') {
+            if($pseudo == 'Jean' || $pseudo == 'Val' || $pseudo == 'usako' || $pseudo == 'philippe') {
 
                 $_SESSION['admin'] = true;
             }
 
 
-            header('Location: ../public/index.php');
+            header('Location: ../index.php');
 
 
         }if (!$passwordOk) {
