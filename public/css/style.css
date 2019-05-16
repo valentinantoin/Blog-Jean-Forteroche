@@ -11,6 +11,12 @@ body {
 
 main {
     padding-top: 3rem;
+    justify-content: center;
+}
+
+section {
+    justify-content: center;
+    margin: 1.5rem;
 }
 
 p {
