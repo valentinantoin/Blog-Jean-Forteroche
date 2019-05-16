@@ -1,8 +1,13 @@
 <?php
 
+require_once ('../src/controllers/Controller.php');
+require_once ('../src/models/CommentManager.php');
+require_once ('../src/models/ChapterManager.php');
+
 use App\Controllers\Controller;
 use App\Models\CommentManager;
 use App\Models\ChapterManager;
+
 
 class CommentController extends Controller {
 
@@ -33,6 +38,17 @@ class CommentController extends Controller {
         $chapter = $chapterManager->getChapter($id);
 
         echo $this->render("chapter.twig",['chapter' => $chapter, 'comments' => $comments]);
+
+    }
+
+    public function reportComment() {
+
+        $id = $_GET['id'];
+
+        $commentManager = new CommentManager();
+        $commentManager->setReportComment($id);
+
+        header('Location: ../index.php?acces=chapters');
 
     }
 
