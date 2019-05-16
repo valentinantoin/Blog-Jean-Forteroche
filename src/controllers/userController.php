@@ -58,12 +58,11 @@ class UserController extends Controller {
 
         }if (!$passwordOk) {
 
-            $message = "Identifiant ou mot de passe incorrect !";
+            echo "<script>alert(\"Identifiant ou mot de passe incorrect !\")</script>";
 
-            echo $this->render('connection.twig', ['error' => $message]);
+            echo $this->render('connection.twig');
+
         }
-
-
     }
 }
 
