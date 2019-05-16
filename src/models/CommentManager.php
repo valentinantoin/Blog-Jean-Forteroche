@@ -47,10 +47,9 @@ class CommentManager {
     {
         $dbConnection = new DbConnection();
         $pdo = $dbConnection->dbConnect();
-        $req = $pdo->prepare('DELETE FROM comments WHERE id='.$id.' ');
+        $req = $pdo->prepare('DELETE FROM comments WHERE id= ?');
         $req->execute(array($id));
 
-        return $req;
     }
 
     //REPORT COMMENT
@@ -72,5 +71,13 @@ class CommentManager {
         $commentList = $req->fetchAll();
 
         return $commentList;
+    }
+
+    public function noReportComment($id) {
+
+        $dbConnection = new DbConnection();
+        $pdo = $dbConnection->dbConnect();
+        $req = $pdo->prepare('UPDATE comments SET report = "ok" WHERE id =?');
+        $req->execute(array($id));
     }
 }
