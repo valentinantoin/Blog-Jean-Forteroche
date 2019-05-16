@@ -96,6 +96,12 @@ switch ($page) {
         $reportComment = $commentController->reportComment();
         break;
 
+    case "valcom" :
+        require ('CommentController.php');
+        $commentController = new CommentController($twig);
+        $commentController->validComment();
+        break;
+
     case "admin" :
         require ('ServiceController.php');
         $serviceController = new ServiceController($twig);
