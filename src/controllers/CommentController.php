@@ -3,6 +3,7 @@
 require_once ('../src/controllers/Controller.php');
 require_once ('../src/models/CommentManager.php');
 require_once ('../src/models/ChapterManager.php');
+require_once ('../src/controllers/ChapterController.php');
 
 use App\Controllers\Controller;
 use App\Models\CommentManager;
@@ -48,8 +49,37 @@ class CommentController extends Controller {
         $commentManager = new CommentManager();
         $commentManager->setReportComment($id);
 
-        header('Location: ../index.php?acces=chapters');
+        echo "<script>alert(\"Ce commentaire a bien été signalé.\")</script>";
 
+        $chapterManager = new ChapterManager();
+        $chapters = $chapterManager->getChapterPage();
+
+        echo $this->render("chapters.twig",['chapters' => $chapters]);
+
+    }
+
+    public function deleteComment() {
+
+        $id = $_GET['id'];
+
+        $commentManager = new CommentManager();
+        $commentManager->deleteComment($id);
+        $commentsList = $commentManager->listReportComments();
+
+        echo $this->render("admin.twig", ['comments' => $commentsList ]);
+    }
+
+    public function validComment() {
+
+        $id = $_GET['id'];
+
+        $commentManager = new CommentManager();
+        $commentManager->noReportComment($id);
+
+        $commentManager = new CommentManager();
+        $commentsList = $commentManager->listReportComments();
+
+        echo $this->render("admin.twig", ['comments' => $commentsList ]);
     }
 
 }
