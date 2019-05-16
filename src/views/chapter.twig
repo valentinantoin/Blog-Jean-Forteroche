@@ -28,6 +28,12 @@
                 <h6 class="card-text">Le {{ comment.creation_date_fr }}</h6>
                 <p class="card-text">{{ comment.content }}</p>
             </div>
+
+            {% if session.pseudo is defined %}
+
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=reportcom&id={{ comment.id }}">Signaler ce commentaire.</a>
+
+            {% endif %}
         </div>
 
     {% endfor %}
@@ -35,7 +41,7 @@
 
     {% if session.pseudo is defined %}
 
-    <form method="post" action="http://localhost/blog/public/index.php?acces=postcom&id={{ chapter.id }}">
+    <form method="post" action="https://jeanforteroche.valentin-antoin.fr/index.php?acces=postcom&id={{ chapter.id }}">
 
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
