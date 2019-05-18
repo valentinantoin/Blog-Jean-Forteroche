@@ -1,0 +1,37 @@
+{% extends "layout.twig" %}
+
+{% block title %} Modification d'un chapitre {% endblock %}
+
+{% block content %}
+
+    <h1>Modification du chapitre</h1>
+
+    <form method="post" action="https://jeanforteroche.valentin-antoin.fr/index.php?acces=upchap&id={{ chapter.id }}">
+
+        <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="addon-wrapping">Titre</span>
+            </div>
+            <input type="text" class="form-control" aria-label="title" name="title" aria-describedby="addon-wrapping" placeholder="{{ chapter.title }}">
+        </div>
+
+        <textarea class="form-control" aria-label="content" name="content">{{ chapter.content }}</textarea>
+
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+
+    </form>
+
+{% endblock %}
+
+{% block script %}
+
+    <script src="js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({
+            selector:'textarea',
+            language : "fr_FR",
+            forced_root_block : false,
+            force_br_newlines : true,
+            force_p_newlines : false}
+        );</script>
+
+{% endblock %}
