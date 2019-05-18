@@ -4,7 +4,6 @@
 use App\Controllers\Controller;
 use App\Models\CommentManager;
 use App\Models\ChapterManager;
-//use App\Models\ChapterController;
 
 
 class CommentController extends Controller {
