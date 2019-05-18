@@ -12,6 +12,13 @@
 
         <p>{{ chapter.content | nl2br}}</p>
 
+        {% if session.admin is defined %}
+
+            <a class="controls" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=modchap&id={{ chapter.id }}">Modifier ce chapitre.</a>
+            <a class="controls" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delchap&id={{ chapter.id }}">Supprimer ce chapitre.</a>
+
+        {% endif %}
+
     </div>
 
 
@@ -20,20 +27,24 @@
 
 {% block comments %}
 
+    <h2>Commentaires : </h2>
+
     {% for comment in comments %}
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Posté par : {{ comment.user_pseudo }}</h5>
-                <h6 class="card-text">Le {{ comment.creation_date_fr }}</h6>
+                <h3 class="card-title">Posté par : {{ comment.user_pseudo }}</h3>
+                <h4 class="card-text">Le {{ comment.creation_date_fr }}</h4>
                 <p class="card-text">{{ comment.content }}</p>
+
+                {% if session.pseudo is defined %}
+
+                    <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=reportcom&id={{ comment.id }}">Signaler ce commentaire.</a>
+
+                {% endif %}
+
             </div>
 
-            {% if session.pseudo is defined %}
-
-                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=reportcom&id={{ comment.id }}">Signaler ce commentaire.</a>
-
-            {% endif %}
         </div>
 
     {% endfor %}
