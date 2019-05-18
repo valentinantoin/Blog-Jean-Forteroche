@@ -4,11 +4,10 @@
 session_start();
 
 //autoload
-require "../vendor/autoload.php";
-
+require_once dirname(__DIR__).'/vendor/autoload.php';
 
 
 //load front controller for routing
-require ("../src/controllers/frontController.php");
+require ("../src/Controllers/frontController.php");
 
 

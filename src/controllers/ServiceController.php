@@ -1,8 +1,5 @@
 <?php
 
-require_once ('../src/controllers/Controller.php');
-require_once ('../src/models/CommentManager.php');
-
 use App\Controllers\Controller;
 use App\Models\CommentManager;
 

@@ -1,11 +1,8 @@
 <?php
 
 use App\Controllers\Controller;
-require_once ('../src/controllers/Controller.php');
 use App\Models\ChapterManager;
-require_once ('../src/models/ChapterManager.php');
 use App\Models\CommentManager;
-require_once ('../src/models/CommentManager.php');
 
 class ChapterController extends Controller {
 

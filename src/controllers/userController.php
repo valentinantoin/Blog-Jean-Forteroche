@@ -2,9 +2,7 @@
 
 
 use App\Models\UserManager;
-require_once ('../src/models/UserManager.php');
 use App\Controllers\Controller;
-require_once ('../src/controllers/Controller.php');
 
 
 class UserController extends Controller {

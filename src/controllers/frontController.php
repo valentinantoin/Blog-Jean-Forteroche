@@ -2,7 +2,7 @@
 
 
 //TEMPLATES PREPARATION
-$loader = new Twig_Loader_Filesystem( '../src/views');
+$loader = new Twig_Loader_Filesystem( '../src/Views');
 $twig = new Twig_Environment($loader, [
     'cache' => false,
     'debug' => true,
@@ -100,6 +100,12 @@ switch ($page) {
         require ('CommentController.php');
         $commentController = new CommentController($twig);
         $commentController->validComment();
+        break;
+
+    case "delcom" :
+        require ('CommentController.php');
+        $commentController = new CommentController($twig);
+        $commentController->deleteComment();
         break;
 
     case "admin" :
