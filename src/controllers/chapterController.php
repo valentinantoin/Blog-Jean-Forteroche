@@ -41,8 +41,52 @@ class ChapterController extends Controller {
 
         $chapterManager = new ChapterManager();
         $chapterManager->addChapter($title, $content);
+
+        echo "<script>alert(\"Ce chapitre a bien été ajouté.\")</script>";
+
         $chapterLast =$chapterManager->getLastChapter();
 
         echo $this->render("home.twig",['chapter' => $chapterLast]);
+    }
+
+    public function chapterDelete() {
+
+        $id = $_GET['id'];
+
+        $chapterManager = new ChapterManager();
+        $chapterManager->deleteChapter($id);
+
+        echo "<script>alert(\"Ce chapitre a bien été supprimé.\")</script>";
+
+        $chapters = $chapterManager->getChapterPage();
+
+        echo $this->render("chapters.twig",['chapters' => $chapters]);
+    }
+
+    public function chapterModify() {
+
+        $id = $_GET['id'];
+
+        $chapterManager = new ChapterManager();
+        $chapter = $chapterManager->getChapter($id);
+
+        echo $this->render("modify.twig",['chapter' => $chapter]);
+    }
+
+    public function updateChapter() {
+
+        $id = $_GET['id'];
+        $new_title = $_POST['title'];
+        $new_content = $_POST['content'];
+
+        $chapterManager = new ChapterManager();
+        $chapterManager->updateChapter($id, $new_title, $new_content);
+        $chapter = $chapterManager->getChapter($id);
+
+        echo $this->render('chapter.twig', ['chapter' => $chapter]);
+
+
+
+
     }
 }
