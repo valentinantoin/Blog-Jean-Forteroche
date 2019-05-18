@@ -84,6 +84,12 @@ switch ($page) {
         $addChapter = $chapterController->chapterAdd();
         break;
 
+    case "delchap" :
+        require ('ChapterController.php');
+        $chapterController = new ChapterController($twig);
+        $deleteChapter = $chapterController->chapterDelete();
+        break;
+
     case "postcom" :
         require ('CommentController.php');
         $commentController = new CommentController($twig);
@@ -108,10 +114,29 @@ switch ($page) {
         $commentController->deleteComment();
         break;
 
+    case "modchap" :
+        require ('ChapterController.php');
+        $chapterController = new ChapterController($twig);
+        $deleteChapter = $chapterController->chapterModify();
+        break;
+
+    case "upchap" :
+        require ('ChapterController.php');
+        $chapterController = new ChapterController($twig);
+        $deleteChapter = $chapterController->updateChapter();
+        break;
+
+
     case "admin" :
-        require ('ServiceController.php');
-        $serviceController = new ServiceController($twig);
-        $adminPage = $serviceController->AdminLoad();
+        if (isset($_SESSION['admin'])) {
+            require ('ServiceController.php');
+            $serviceController = new ServiceController($twig);
+            $adminPage = $serviceController->AdminLoad();
+        }else {
+            require ("ChapterController.php");
+            $chapterController = new ChapterController($twig);
+            $chapterLast = $chapterController->chapterLast();
+        }
         break;
 
     default:
