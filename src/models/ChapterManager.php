@@ -46,19 +46,21 @@ class ChapterManager extends DbConnection
     }
 
 //UPDATE CHAPTER
-    public function updateChapter($title, $new_content)
+    public function updateChapter($id, $new_title, $new_content)
     {
 
-        $req = $this->pdo->prepare('UPDATE chapters SET content = :new_content, creation_date = NOW() WHERE titlte =:title');
-        $req->execute(array('new_content' => $new_content,
-            'title' => $title
+        $req = $this->pdo->prepare('UPDATE chapters SET title = :new_title, content = :new_content, creation_date = NOW() WHERE id =:id');
+        $req->execute(array(
+            'new_content' => $new_content,
+            'new_title' => $new_title,
+            'id' => $id
         ));
     }
 
 //DELETE CHAPTER
-    public function deleteChapter($title)
+    public function deleteChapter($id)
     {
-        $req = $this->pdo->prepare('DELETE FROM chapters WHERE title= :title');
-        $req->execute(array($title));
+        $req = $this->pdo->prepare('DELETE FROM chapters WHERE id= ?');
+        $req->execute(array($id));
     }
 }
