@@ -46,10 +46,10 @@ class CommentManager extends DbConnection
     }
 
     //REPORT COMMENT
-    public function setReportComment($id) {
+    public function setReportComment($comment_id) {
 
         $req = $this->pdo->prepare('UPDATE comments SET report = "pb" WHERE id =?');
-        $req->execute(array($id));
+        $req->execute(array($comment_id));
     }
 
     //GET REPORTED COMMENTS

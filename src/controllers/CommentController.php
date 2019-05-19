@@ -41,16 +41,18 @@ class CommentController extends Controller {
     public function reportComment() {
 
         $id = $_GET['id'];
+        $comment_id = $_GET['com'];
 
         $commentManager = new CommentManager();
-        $commentManager->setReportComment($id);
+        $commentManager->setReportComment($comment_id);
 
         echo "<script>alert(\"Ce commentaire a bien été signalé.\")</script>";
 
         $chapterManager = new ChapterManager();
-        $chapters = $chapterManager->getChapterPage();
+        $chapter = $chapterManager->getChapter($id);
+        $comments = $commentManager->getComment($id);
 
-        echo $this->render("chapters.twig",['chapters' => $chapters]);
+        echo $this->render("chapter.twig",['chapter' => $chapter, 'comments' => $comments]);
 
     }
 
