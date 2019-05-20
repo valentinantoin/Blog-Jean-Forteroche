@@ -16,17 +16,29 @@ class UserController extends Controller {
 
         if ($pass_unchecked === $pass_checked) {
 
-            $pass = password_hash($pass_unchecked, PASSWORD_DEFAULT);
-
             $userManager = new UserManager();
-            $userManager->addUser($pseudo, $mail, $pass);
+            $test = $userManager->dispoPseudo($pseudo);
+
+            if($test['test'] == 0) {
+
+                $pass = password_hash($pass_unchecked, PASSWORD_DEFAULT);
+
+                $userManager = new UserManager();
+                $userManager->addUser($pseudo, $mail, $pass);
 
 
-            header('Location: ../index.php?acces=connection');
+                header('Location: ../index.php?acces=connection');
 
+            }else {
+
+                echo "<script>alert(\"Ce pseudo est déjà pris.. Veuillez en choisir un autre svp. \")</script>";
+
+                echo $this->render('subscribe.twig');
+
+            }
         }else{
 
-            echo "Les passwords ne correspondent pas !";
+            echo "Les mots de passe ne correspondent pas !";
         }
     }
 
