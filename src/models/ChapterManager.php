@@ -63,4 +63,13 @@ class ChapterManager extends DbConnection
         $req = $this->pdo->prepare('DELETE FROM chapters WHERE id= ?');
         $req->execute(array($id));
     }
+
+    public function chapterCount() {
+
+        $req = $this->pdo->prepare('SELECT COUNT(*) AS nbChapter FROM chapters');
+        $req->execute(array());
+        $nbChapter = $req->fetch(\PDO::FETCH_ASSOC);
+
+        return $nbChapter;
+    }
 }

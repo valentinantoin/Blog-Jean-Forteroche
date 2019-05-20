@@ -76,4 +76,13 @@ class CommentManager extends DbConnection
 
         return $chapterId;
     }
+
+    public function commentCount() {
+
+        $req = $this->pdo->prepare('SELECT COUNT(*) AS nbComment FROM comments');
+        $req->execute(array());
+        $nbComment = $req->fetch(\PDO::FETCH_ASSOC);
+
+        return $nbComment;
+    }
 }

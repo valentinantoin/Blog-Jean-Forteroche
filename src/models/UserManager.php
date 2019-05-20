@@ -18,6 +18,15 @@ class UserManager extends DbConnection
         return $newUser;
     }
 
+    public function dispoPseudo($pseudo) {
+
+        $req = $this->pdo->prepare('SELECT COUNT(pseudo) AS test FROM users WHERE pseudo = ? ');
+        $req->execute(array($pseudo));
+        $test = $req->fetch(\PDO::FETCH_ASSOC);
+
+        return $test;
+    }
+
 //READ USER
     public function getUser($pseudo)
     {
@@ -46,5 +55,14 @@ class UserManager extends DbConnection
 
         $req = $this->pdo->prepare('DELETE FROM users WHERE pseudo= :pseudo');
         $req->execute(array('pseudo' => $pseudo));
+    }
+
+    public function userCount() {
+
+        $req = $this->pdo->prepare('SELECT COUNT(*) AS nbUser FROM users');
+        $req->execute(array());
+        $nbUser = $req->fetch(\PDO::FETCH_ASSOC);
+
+        return $nbUser;
     }
 }

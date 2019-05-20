@@ -2,17 +2,30 @@
 
 use App\Controllers\Controller;
 use App\Models\CommentManager;
+use App\Models\ChapterManager;
+use App\Models\UserManager;
 
 
 
 class ServiceController extends Controller {
 
+
     public function adminLoad() {
 
         $commentManager = new CommentManager();
         $commentsList = $commentManager->listReportComments();
+        $nbComment = $commentManager->commentCount();
+        $chapterManager = new ChapterManager();
+        $nbChapter = $chapterManager->chapterCount();
+        $userManager = new UserManager();
+        $nbUser = $userManager->userCount();
 
-        echo $this->render("admin.twig", ['comments' => $commentsList ]);
+
+        echo $this->render("admin.twig",
+            ['comments' => $commentsList,
+            'nbChapter' => $nbChapter['nbChapter'],
+                'nbComment' => $nbComment['nbComment'],
+                'nbUser' => $nbUser['nbUser']]);
     }
 
     public function presentationLoad() {
