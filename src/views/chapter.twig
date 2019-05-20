@@ -14,8 +14,12 @@
 
         {% if session.admin is defined %}
 
-            <a class="controls" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=modchap&id={{ chapter.id }}">Modifier ce chapitre.</a>
-            <a class="controls" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delchap&id={{ chapter.id }}">Supprimer ce chapitre.</a>
+              <a class="controls" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=modchap&id={{ chapter.id }}">
+                <button type="button" class="btn btnChap btn-warning">Modifier ce chapitre</button>
+              </a>
+              <a class="controls" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delchap&id={{ chapter.id }}">
+                <button type="button" class="btn btnChap btn-danger">Supprimer ce chapitre</button>
+              </a>
 
         {% endif %}
 
@@ -32,9 +36,8 @@
     {% for comment in comments %}
 
         <div class="card">
+            <h4 class="card-header">Posté par : <strong>{{ comment.user_pseudo }}</strong>, le {{ comment.creation_date_fr }}</h4>
             <div class="card-body">
-                <h3 class="card-title">Posté par : {{ comment.user_pseudo }}</h3>
-                <h4 class="card-text">Le {{ comment.creation_date_fr }}</h4>
                 <p class="card-text">{{ comment.content }}</p>
 
                 {% if session.pseudo is defined %}
