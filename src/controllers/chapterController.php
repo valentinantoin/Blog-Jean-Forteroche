@@ -55,6 +55,8 @@ class ChapterController extends Controller {
 
         $chapterManager = new ChapterManager();
         $chapterManager->deleteChapter($id);
+        $commentManager = new CommentManager();
+        $commentManager->deleteComments($id);
 
         echo "<script>alert(\"Ce chapitre a bien été supprimé.\")</script>";
 

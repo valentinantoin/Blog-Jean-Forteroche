@@ -42,7 +42,13 @@ class CommentManager extends DbConnection
     {
         $req = $this->pdo->prepare('DELETE FROM comments WHERE id= ?');
         $req->execute(array($id));
+    }
 
+    //DELETE COMMENTS FROM CHAPTER DELETE
+    public function deleteComments($id) {
+
+        $req = $this->pdo->prepare('DELETE FROM comments WHERE chapter_id= ?');
+        $req->execute(array($id));
     }
 
     //REPORT COMMENT
@@ -62,12 +68,14 @@ class CommentManager extends DbConnection
         return $commentList;
     }
 
+    //DE REPORT COMMENT
     public function noReportComment($id) {
 
         $req = $this->pdo->prepare('UPDATE comments SET report = "ok" WHERE id =?');
         $req->execute(array($id));
     }
 
+    //GET CHAPTER_ID FROM COMMENT
     public function commentChapter($id) {
 
         $req = $this->pdo->prepare('SELECT chapter_id FROM comments WHERE id=?' );
@@ -77,6 +85,7 @@ class CommentManager extends DbConnection
         return $chapterId;
     }
 
+    //GET NUMBER OF COMMENT
     public function commentCount() {
 
         $req = $this->pdo->prepare('SELECT COUNT(*) AS nbComment FROM comments');
