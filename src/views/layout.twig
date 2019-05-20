@@ -38,11 +38,13 @@
 
     <!--   FONTS   -->
     <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
 
     <!--   NORMALIZE   -->
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
 
     <!--   GOOGLE SEARCH CONSOLE   -->
+    <meta name="google-site-verification" content="bxUuDPxfionVUv0dGgyArG2ji7sxPJBfRmzL99RwSyo" />
 
     <!--  CSS STYLESHEET   -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -53,6 +55,8 @@
 
 <body>
 
+
+<!--   NAVBAR   -->
     <header>
 
         <nav class="navbar fixed-top navbar-expand-lg navbar navbar-dark bg-dark">
@@ -91,15 +95,16 @@
                     <a class="nav-link" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=disconnect">Se déconnecter</a>
                     </li>
                 </ul>
-                <span class="navbar-text">
+                <li class="navbar-text">
                           -- Bonjour {{ session.pseudo }} --
-                </span>
+                </li>
                 {% endif %}
             </div>
         </nav>
 
     </header>
 
+<!--   MAIN CONTENT   -->
     <main>
 
         {% block content %}{% endblock %}
@@ -108,6 +113,7 @@
 
     </main>
 
+<!--   FOOTER   -->
     <footer>
 
         <a href="mailto:valentin.antoin@gmail.com"><i class="far fa-envelope fa-4x"></i></a>
