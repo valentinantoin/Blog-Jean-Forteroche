@@ -36,7 +36,9 @@ switch ($page) {
         break;
 
     case "sendmail" :
-        require ('contactController.php');
+        require ('ContactController.php');
+        $contactController = new ContactController($twig);
+        $contactController->sendMail();
         break;
 
     case "chapters" :
