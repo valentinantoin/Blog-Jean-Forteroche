@@ -29,6 +29,16 @@ switch ($page) {
         $chapterLast = $chapterController->chapterLast();
         break;
 
+    case "contact" :
+        require ('ServiceController.php');
+        $serviceController = new ServiceController($twig);
+        $serviceController->contactLoad();
+        break;
+
+    case "sendmail" :
+        require ('contactController.php');
+        break;
+
     case "chapters" :
         require ("ChapterController.php");
         $chapterController = new ChapterController($twig);
@@ -125,7 +135,6 @@ switch ($page) {
         $chapterController = new ChapterController($twig);
         $deleteChapter = $chapterController->updateChapter();
         break;
-
 
     case "admin" :
         if (isset($_SESSION['admin'])) {
