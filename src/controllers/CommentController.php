@@ -4,22 +4,26 @@
 use App\Controllers\Controller;
 use App\Models\CommentManager;
 use App\Models\ChapterManager;
+use App\Models\UserManager;
 
 
-class CommentController extends Controller {
+class CommentController extends Controller
+{
 
 
-    public function commentList() {
+    public function commentList()
+    {
 
         $id = $_GET['id'];
         $commentManager = new CommentManager();
         $comments = $commentManager->getComment($id);
 
-        echo $this->render("chapter.twig",['comments' => $comments]); //FUNCTION CALL IN CHAPTERCONTROLLER !!!
+        echo $this->render("chapter.twig", ['comments' => $comments]); //FUNCTION CALL IN CHAPTERCONTROLLER !!!
 
     }
 
-    public function addComment() {
+    public function addComment()
+    {
 
         $id = $_GET['id'];
         $chapter_id = $id;
@@ -34,11 +38,12 @@ class CommentController extends Controller {
         $chapterManager = new ChapterManager();
         $chapter = $chapterManager->getChapter($id);
 
-        echo $this->render("chapter.twig",['chapter' => $chapter, 'comments' => $comments]);
+        echo $this->render("chapter.twig", ['chapter' => $chapter, 'comments' => $comments]);
 
     }
 
-    public function reportComment() {
+    public function reportComment()
+    {
 
         $id = $_GET['id'];
         $comment_id = $_GET['com'];
@@ -52,32 +57,50 @@ class CommentController extends Controller {
         $chapter = $chapterManager->getChapter($id);
         $comments = $commentManager->getComment($id);
 
-        echo $this->render("chapter.twig",['chapter' => $chapter, 'comments' => $comments]);
+        echo $this->render("chapter.twig", ['chapter' => $chapter, 'comments' => $comments]);
 
     }
 
-    public function deleteComment() {
+    public function deleteComment()
+    {
 
         $id = $_GET['id'];
 
         $commentManager = new CommentManager();
         $commentManager->deleteComment($id);
         $commentsList = $commentManager->listReportComments();
+        $nbComment = $commentManager->commentCount();
+        $chapterManager = new ChapterManager();
+        $nbChapter = $chapterManager->chapterCount();
+        $userManager = new UserManager();
+        $nbUser = $userManager->userCount();
 
-        echo $this->render("admin.twig", ['comments' => $commentsList ]);
+        echo $this->render("admin.twig",
+            ['comments' => $commentsList,
+                'nbChapter' => $nbChapter['nbChapter'],
+                'nbComment' => $nbComment['nbComment'],
+                'nbUser' => $nbUser['nbUser']]);
     }
 
-    public function validComment() {
+
+    public function validComment()
+    {
 
         $id = $_GET['id'];
 
         $commentManager = new CommentManager();
         $commentManager->noReportComment($id);
-
-        $commentManager = new CommentManager();
         $commentsList = $commentManager->listReportComments();
+        $nbComment = $commentManager->commentCount();
+        $chapterManager = new ChapterManager();
+        $nbChapter = $chapterManager->chapterCount();
+        $userManager = new UserManager();
+        $nbUser = $userManager->userCount();
 
-        echo $this->render("admin.twig", ['comments' => $commentsList ]);
+        echo $this->render("admin.twig",
+            ['comments' => $commentsList,
+                'nbChapter' => $nbChapter['nbChapter'],
+                'nbComment' => $nbComment['nbComment'],
+                'nbUser' => $nbUser['nbUser']]);
     }
-
 }
