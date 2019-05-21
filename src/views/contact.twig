@@ -11,12 +11,7 @@
     <h1>Contactez moi !</h1>
 
     <form method="post" action="https://jeanforteroche.valentin-antoin.fr/index.php?acces=sendmail">
-        <div class="input-group flex-nowrap">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="addon-wrapping">Titre de votre message</span>
-            </div>
-            <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title" aria-describedby="addon-wrapping" required>
-        </div>
+
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Votre nom</span>
@@ -27,7 +22,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Votre e-mail</span>
             </div>
-            <input type="text" class="form-control" placeholder="Mail" aria-label="mail" name="mail" aria-describedby="addon-wrapping" required>
+            <input type="email" class="form-control" placeholder="Mail" aria-label="mail" name="mail" aria-describedby="addon-wrapping" required>
         </div>
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
@@ -36,6 +31,7 @@
             <textarea class="form-control" aria-label="With textarea" name="message" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Envoyer</button>
+
     </form>
 
 {% endblock %}
