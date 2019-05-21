@@ -6,12 +6,19 @@ use App\Models\ChapterManager;
 use App\Models\UserManager;
 
 
-
+/**
+ * Class ServiceController
+ */
 class ServiceController extends Controller {
 
 
-    public function adminLoad() {
-
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function adminLoad()
+    {
         $commentManager = new CommentManager();
         $commentsList = $commentManager->listReportComments();
         $nbComment = $commentManager->commentCount();
@@ -20,7 +27,6 @@ class ServiceController extends Controller {
         $userManager = new UserManager();
         $nbUser = $userManager->userCount();
 
-
         echo $this->render("admin.twig",
             ['comments' => $commentsList,
             'nbChapter' => $nbChapter['nbChapter'],
@@ -28,25 +34,53 @@ class ServiceController extends Controller {
                 'nbUser' => $nbUser['nbUser']]);
     }
 
-    public function presentationLoad() {
-
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function presentationLoad()
+    {
         echo $this->render('presentation.twig');
     }
 
-    public function connectionLoad() {
-
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function connectionLoad()
+    {
         echo $this->render('connection.twig');
     }
 
-    public function subscribeLoad() {
-
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function subscribeLoad()
+    {
         echo $this->render('subscribe.twig');
     }
 
-    public function disconnection() {
-
+    /**
+     *
+     */
+    public function disconnection()
+    {
         session_destroy();
         header('Location: ../index.php');
+    }
+
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function contactLoad()
+    {
+        echo $this->render('contact.twig');
     }
 
 }

@@ -4,19 +4,32 @@ use App\Controllers\Controller;
 use App\Models\ChapterManager;
 use App\Models\CommentManager;
 
+
+/**
+ * Class ChapterController
+ */
 class ChapterController extends Controller {
 
-
-    public function chapterList() {
-
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function chapterList()
+    {
         $chapterManager = new ChapterManager();
         $chapters = $chapterManager->getChapterPage();
 
         echo $this->render("chapters.twig",['chapters' => $chapters]);
     }
 
-    public function chapterRead() {
-
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function chapterRead()
+    {
         $id = $_GET['id'];
         $chapterManager = new ChapterManager();
         $chapter = $chapterManager->getChapter($id);
@@ -26,16 +39,26 @@ class ChapterController extends Controller {
         echo $this->render("chapter.twig",['chapter' => $chapter, 'comments' => $comments]);
     }
 
-    public function chapterLast() {
-
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function chapterLast()
+    {
         $chapterManager = new ChapterManager();
         $chapterLast = $chapterManager->getLastChapter();
 
         echo $this->render("home.twig",['chapter' => $chapterLast]);
     }
 
-    public function chapterAdd() {
-
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function chapterAdd()
+    {
         $title = $_POST['title'];
         $content = $_POST['content'];
 
@@ -49,8 +72,13 @@ class ChapterController extends Controller {
         echo $this->render("home.twig",['chapter' => $chapterLast]);
     }
 
-    public function chapterDelete() {
-
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function chapterDelete()
+    {
         $id = $_GET['id'];
 
         $chapterManager = new ChapterManager();
@@ -65,8 +93,13 @@ class ChapterController extends Controller {
         echo $this->render("chapters.twig",['chapters' => $chapters]);
     }
 
-    public function chapterModify() {
-
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function chapterModify()
+    {
         $id = $_GET['id'];
 
         $chapterManager = new ChapterManager();
@@ -75,8 +108,13 @@ class ChapterController extends Controller {
         echo $this->render("modify.twig",['chapter' => $chapter]);
     }
 
-    public function updateChapter() {
-
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function updateChapter()
+    {
         $id = $_GET['id'];
         $new_title = $_POST['title'];
         $new_content = $_POST['content'];
@@ -86,9 +124,5 @@ class ChapterController extends Controller {
         $chapter = $chapterManager->getChapter($id);
 
         echo $this->render('chapter.twig', ['chapter' => $chapter]);
-
-
-
-
     }
 }

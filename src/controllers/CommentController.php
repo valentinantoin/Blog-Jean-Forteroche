@@ -7,29 +7,37 @@ use App\Models\ChapterManager;
 use App\Models\UserManager;
 
 
+/**
+ * Class CommentController
+ */
 class CommentController extends Controller
 {
 
-
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function commentList()
     {
-
         $id = $_GET['id'];
         $commentManager = new CommentManager();
         $comments = $commentManager->getComment($id);
 
         echo $this->render("chapter.twig", ['comments' => $comments]); //FUNCTION CALL IN CHAPTERCONTROLLER !!!
-
     }
 
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function addComment()
     {
-
         $id = $_GET['id'];
         $chapter_id = $id;
         $user_pseudo = $_SESSION['pseudo'];
         $content = $_POST['comment'];
-
 
         $commentManager = new CommentManager();
         $commentManager->addComment($chapter_id, $user_pseudo, $content);
@@ -39,12 +47,15 @@ class CommentController extends Controller
         $chapter = $chapterManager->getChapter($id);
 
         echo $this->render("chapter.twig", ['chapter' => $chapter, 'comments' => $comments]);
-
     }
 
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function reportComment()
     {
-
         $id = $_GET['id'];
         $comment_id = $_GET['com'];
 
@@ -58,12 +69,15 @@ class CommentController extends Controller
         $comments = $commentManager->getComment($id);
 
         echo $this->render("chapter.twig", ['chapter' => $chapter, 'comments' => $comments]);
-
     }
 
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function deleteComment()
     {
-
         $id = $_GET['id'];
 
         $commentManager = new CommentManager();
@@ -82,10 +96,13 @@ class CommentController extends Controller
                 'nbUser' => $nbUser['nbUser']]);
     }
 
-
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function validComment()
     {
-
         $id = $_GET['id'];
 
         $commentManager = new CommentManager();
