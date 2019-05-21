@@ -83,4 +83,30 @@ class ServiceController extends Controller {
         echo $this->render('contact.twig');
     }
 
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function sendMail()
+    {
+        $name = htmlentities($_POST['name']);
+        $mail = htmlentities($_POST['mail']);
+        $content = htmlentities($_POST['message']);
+
+        $from = "anva6816@melon.o2switch.net";
+        $to = "valentin.antoin@gmail.com";
+        $subject = 'message de ' .$name.' <'.$mail.'>';
+        $message = $content;
+
+        $header = 'MIME-Version: 1.0'."\r\n";
+        $header .= 'Content-type: text/html; charset=utf-8'."\r\n";
+        $header .= 'From: '.$from."\r\n";
+
+        mail($to,$subject,$message, $header);
+
+        echo "<script>alert(\"Votre mail est bien envoyé\")</script>";
+
+        echo $this->render('contact.twig');
+    }
 }

@@ -36,8 +36,8 @@ switch ($page) {
         break;
 
     case "sendmail" :
-        require ('ContactController.php');
-        $contactController = new ContactController($twig);
+        require ('ServiceController.php');
+        $contactController = new ServiceController($twig);
         $contactController->sendMail();
         break;
 
