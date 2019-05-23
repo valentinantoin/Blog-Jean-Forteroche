@@ -14,6 +14,10 @@
                 <span class="badge badge-secondary badge-pill">{{ nbChapter }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
+                Nombre de chapitre en attente
+                <span class="badge badge-secondary badge-pill">{{ nbChapterHold }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
                 Nombre de commentaire posté
                 <span class="badge badge-secondary badge-pill">{{ nbComment }}</span>
             </li>
@@ -27,7 +31,7 @@
 
     <section>
 
-    <h2>Vous pouvez saisir ici un nouveau chapitre.</h2>
+    <h2 class="mt" id="newchap">Vous pouvez saisir ici un nouveau chapitre.</h2>
 
     <form method="post" action="https://jeanforteroche.valentin-antoin.fr/index.php?acces=postchap">
 
@@ -40,7 +44,8 @@
 
             <textarea class="form-control" aria-label="content" name="content"></textarea>
 
-       <button type="submit" class="btn btn-primary">Envoyer</button>
+       <button type="submit" class="btn btn-primary">Publier</button>
+        <button type="submit" class="btn btn-warning" formaction="https://jeanforteroche.valentin-antoin.fr/index.php?acces=savechap">Saauvegarder</button>
 
     </form>
     </section>
@@ -48,25 +53,43 @@
     <section>
 
 
-    <h2>Retrouvez ici tous les commentaires qui sont signalés.</h2>
+    <h2 class="mt" id="savechap">Retrouvez ici tous les chapitres en attente.</h2>
 
-{%  for comment in comments %}
+        {% for chapterHold in chaptersHold %}
 
-     <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Posté par : {{ comment.user_pseudo }}</h5>
-            <h6 class="card-text">Le {{ comment.creation_date_fr }}</h6>
-            <p class="card-text">{{ comment.content }}</p>
+            <div class="card border-dark">
+                <h2 class="card-header">{{ chapterHold.title | nl2br}}</h2>
+                <div class="card-body">
+                    <h3 class="card-text">{{ chapterHold.creation_date_fr }}</h3>
+                    <p class="card-text">{{ chapterHold.content | nl2br }}</p>
+                    <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=modchap&id={{ chapterHold.id }}"><button type="button" class="btn btnAdmin btn-warning">Continuer</button></a>
+                    <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delchap&id={{ chapterHold.id }}"><button type="button" class="btn btnAdmin btn-danger">Supprimer</button></a>
+                </div>
+            </div>
 
-                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=valcom&id={{ comment.id }}"><button type="button" class="btn btnAdmin btn-success">Valider</button></a>
-                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delcom&id={{ comment.id }}"><button type="button" class="btn btnAdmin btn-danger">Supprimer</button></a>
-
-        </div>
-     </div>
+        {% endfor %}
 
 
 
-{% endfor %}
+        <h2 class="mt" id="comments">Retrouvez ici tous les commentaires qui sont signalés.</h2>
+
+        {%  for comment in comments %}
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Posté par : {{ comment.user_pseudo }}</h5>
+                    <h6 class="card-text">Le {{ comment.creation_date_fr }}</h6>
+                    <p class="card-text">{{ comment.content }}</p>
+
+                    <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=valcom&id={{ comment.id }}"><button type="button" class="btn btnAdmin btn-primary">Valider</button></a>
+                    <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delcom&id={{ comment.id }}"><button type="button" class="btn btnAdmin btn-danger">Supprimer</button></a>
+
+                </div>
+            </div>
+
+        {% endfor %}
+
+
 
     </section>
 
