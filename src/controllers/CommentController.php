@@ -86,6 +86,7 @@ class CommentController extends Controller
         $nbComment = $commentManager->commentCount();
         $chapterManager = new ChapterManager();
         $nbChapter = $chapterManager->chapterCount();
+        $chaptersHold = $chapterManager->getChaptersHold();
         $userManager = new UserManager();
         $nbUser = $userManager->userCount();
 
@@ -93,6 +94,7 @@ class CommentController extends Controller
             ['comments' => $commentsList,
                 'nbChapter' => $nbChapter['nbChapter'],
                 'nbComment' => $nbComment['nbComment'],
+                'chaptersHold' => $chaptersHold,
                 'nbUser' => $nbUser['nbUser']]);
     }
 
@@ -111,6 +113,7 @@ class CommentController extends Controller
         $nbComment = $commentManager->commentCount();
         $chapterManager = new ChapterManager();
         $nbChapter = $chapterManager->chapterCount();
+        $chaptersHold = $chapterManager->getChaptersHold();
         $userManager = new UserManager();
         $nbUser = $userManager->userCount();
 
@@ -118,6 +121,7 @@ class CommentController extends Controller
             ['comments' => $commentsList,
                 'nbChapter' => $nbChapter['nbChapter'],
                 'nbComment' => $nbComment['nbComment'],
+                'chaptersHold' => $chaptersHold,
                 'nbUser' => $nbUser['nbUser']]);
     }
 }
