@@ -78,6 +78,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=contact">Contact</a>
                     </li>
+                    {% if session.pseudo is not defined %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Connectez-vous
@@ -87,21 +88,29 @@
                             <a class="dropdown-item" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=connection">Connexion</a>
                         </div>
                     </li>
+                    {% endif %}
                     {% if session.admin is defined %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin">Admin</a>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin">Acceuil</a>
+                                <a class="dropdown-item" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin#newchap">Nouveau chapitre</a>
+                                <a class="dropdown-item" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin#savechap">Chapitres en attente </a>
+                                <a class="dropdown-item" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin#comments">modération</a>
+                            </div>
+                        </li>
                     {% endif %}
 
                     {% if session.pseudo is defined %}
-                    <li>
+                    <li class="nav-item">
                     <a class="nav-link" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=disconnect">Se déconnecter</a>
                     </li>
-                </ul>
-                <li class="navbar-text">
-                          -- Bonjour {{ session.pseudo }} --
+                <li class="navbar-item">
+                    <a class="nav-link" href="#">Bonjour {{ session.pseudo }}</a>
                 </li>
                 {% endif %}
+                </ul>
             </div>
         </nav>
 
