@@ -58,13 +58,6 @@ p {
     margin: 2rem;
 }
 
-.error {
-    width: 100%;
-    justify-content: center;
-    font-size: 2rem;
-}
-
-
 /*---   HEADER   ---*/
 nav > a:first-child{
     margin-left: 0;
@@ -136,7 +129,21 @@ img {
     height: 700px;
 }
 
-@media ( max-width: 769px) {
+
+@media ( max-width: 1024px) {
+
+    .list-group,
+    form,
+    card {
+        width: 80%;
+        margin: auto;
+    }
+
+
+}
+
+
+@media ( max-width: 768px) {
 
     /*--- CARROUSEL   ---*/
     img {
@@ -145,7 +152,7 @@ img {
 
     .carousel-inner{
         height: 300px;
-        margin-top: 5rem;
+        margin-top: 3rem;
     }
 
     main{
@@ -155,5 +162,64 @@ img {
     h1{
         margin: 1rem 2rem;
     }
+
+    .mt {
+        padding-top: 10rem;
+    }
+
+    section {
+        width: 90%;
+        margin: auto;
+    }
+    .list-group,
+    form,
+    card {
+        width: 90%;
+        margin: auto;
+    }
+
+
     
+}
+
+@media (max-width: 375px) {
+
+    .btncontainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .btn{
+        width: 100%;
+        margin: 1rem auto;
+    }
+
+    .controls {
+        margin: auto;
+    }
+
+    .btnChap {
+        width: 100%;
+        margin: 1rem auto;
+    }
+
+    .input-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #addon-wrapping {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #comment {
+        width: 100%;
+    }
+
+    .input-group > .form-control {
+        width: 100%;
+    }
 }
