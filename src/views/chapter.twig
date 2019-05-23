@@ -5,6 +5,8 @@
 
 {% block content %}
 
+<main>
+
 
     <h1>{{ chapter.title | nl2br}}</h1>
 
@@ -25,18 +27,22 @@
 
     </div>
 
+</main>
+
 
 {% endblock %}
 
 
 {% block comments %}
 
+
+
     <h2>Commentaires : </h2>
 
     {% for comment in comments %}
 
-        <div class="card">
-            <h4 class="card-header">Posté par : <strong>{{ comment.user_pseudo }}</strong>, le {{ comment.creation_date_fr }}</h4>
+        <section class="card">
+            <h3 class="card-header">Posté par : <strong>{{ comment.user_pseudo }}</strong>, le {{ comment.creation_date_fr }}</h3>
             <div class="card-body">
                 <p class="card-text">{{ comment.content }}</p>
 
@@ -48,9 +54,11 @@
 
             </div>
 
-        </div>
+        </section>
 
     {% endfor %}
+
+
 
 
     {% if session.pseudo is defined %}
@@ -59,9 +67,9 @@
 
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="addon-wrapping">Ajoutez un commentaire</span>
+                <label for="comment" class="input-group-text" id="addon-wrapping">Ajoutez un commentaire</label>
             </div>
-            <textarea class="form-control" aria-label="comment" name="comment" aria-describedby="addon-wrapping" rows="4" cols ="20" required></textarea>
+            <textarea id="comment" class="form-control" aria-label="comment" name="comment" aria-describedby="addon-wrapping" rows="4" cols ="20" required></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Envoyer</button>

@@ -10,9 +10,9 @@
 
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="addon-wrapping">Titre</span>
+                <label for="title" class="input-group-text" id="addon-wrapping">Titre</label>
             </div>
-            <input type="text" class="form-control" aria-label="title" name="title" aria-describedby="addon-wrapping" placeholder="{{ chapter.title }}">
+            <input id="title" type="text" class="form-control" aria-label="title" name="title" aria-describedby="addon-wrapping" placeholder="{{ chapter.title }}">
         </div>
 
         <textarea class="form-control" aria-label="content" name="content">{{ chapter.content }}</textarea>
