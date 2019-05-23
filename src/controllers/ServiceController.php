@@ -24,12 +24,16 @@ class ServiceController extends Controller {
         $nbComment = $commentManager->commentCount();
         $chapterManager = new ChapterManager();
         $nbChapter = $chapterManager->chapterCount();
+        $nbChapterHold = $chapterManager->chapterHoldCount();
+        $chaptersHold = $chapterManager->getChaptersHold();
         $userManager = new UserManager();
         $nbUser = $userManager->userCount();
 
         echo $this->render("admin.twig",
             ['comments' => $commentsList,
             'nbChapter' => $nbChapter['nbChapter'],
+                'nbChapterHold' => $nbChapterHold['nbChapterHold'],
+                'chaptersHold' => $chaptersHold,
                 'nbComment' => $nbComment['nbComment'],
                 'nbUser' => $nbUser['nbUser']]);
     }

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Config\DbConnection;
 
-
 /**
  * Class ChapterManager
  * @package App\Models
@@ -18,20 +17,26 @@ class ChapterManager extends DbConnection
      */
     public function addChapter($title, $content)
     {
-        $req = $this->pdo->prepare('INSERT INTO chapters(title, content, creation_date) VALUES(?, ?, NOW())');
+        $req = $this->pdo->prepare('INSERT INTO chapters(title, content, creation_date, state) VALUES(?, ?, NOW(), "ok")');
         $newChapter = $req->execute(array($title, $content));
 
         return $newChapter;
     }
 
-//READ CHAPTER
+    public function saveChapter($title, $content)
+    {
+        $req = $this->pdo->prepare('INSERT INTO chapters(title, content, creation_date, state) VALUES(?, ?, NOW(), "hold")');
+        $saveChapter = $req->execute(array($title, $content));
+
+        return $saveChapter;
+    }
 
     /**
      * @return mixed
      */
     public function getLastChapter()
     {
-        $req = $this->pdo->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM chapters ORDER BY id DESC LIMIT 1');
+        $req = $this->pdo->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM chapters WHERE state = "ok" ORDER BY id DESC LIMIT 1');
         $req->execute();
         $lastChapter = $req->fetch();
 
@@ -43,11 +48,20 @@ class ChapterManager extends DbConnection
      */
     public function getChapterPage()
     {
-        $req = $this->pdo->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters ORDER BY id ASC');
+        $req = $this->pdo->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters WHERE state = "ok" ORDER BY id ASC');
         $req->execute();
         $chapters = $req->fetchAll();
 
         return $chapters;
+    }
+
+    public function getChaptersHold()
+    {
+        $req = $this->pdo->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters WHERE state = "hold" ORDER BY id ASC');
+        $req->execute();
+        $chaptersHold = $req->fetchAll();
+
+        return $chaptersHold;
     }
 
     /**
@@ -63,8 +77,6 @@ class ChapterManager extends DbConnection
         return $chapter;
     }
 
-//UPDATE CHAPTER
-
     /**
      * @param $id
      * @param $new_title
@@ -72,15 +84,13 @@ class ChapterManager extends DbConnection
      */
     public function updateChapter($id, $new_title, $new_content)
     {
-        $req = $this->pdo->prepare('UPDATE chapters SET title = :new_title, content = :new_content, creation_date = NOW() WHERE id =:id');
+        $req = $this->pdo->prepare('UPDATE chapters SET title = :new_title, content = :new_content, creation_date = NOW(), state = "ok" WHERE id =:id');
         $req->execute(array(
             'new_content' => $new_content,
             'new_title' => $new_title,
             'id' => $id
         ));
     }
-
-//DELETE CHAPTER
 
     /**
      * @param $id
@@ -96,10 +106,22 @@ class ChapterManager extends DbConnection
      */
     public function chapterCount()
     {
-        $req = $this->pdo->prepare('SELECT COUNT(*) AS nbChapter FROM chapters');
+        $req = $this->pdo->prepare('SELECT COUNT(*) AS nbChapter FROM chapters WHERE state = "ok"');
         $req->execute(array());
         $nbChapter = $req->fetch(\PDO::FETCH_ASSOC);
 
         return $nbChapter;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function chapterHoldCount()
+    {
+        $req = $this->pdo->prepare('SELECT COUNT(*) AS nbChapterHold FROM chapters WHERE state = "hold"');
+        $req->execute(array());
+        $nbChapterHold = $req->fetch(\PDO::FETCH_ASSOC);
+
+        return $nbChapterHold;
     }
 }

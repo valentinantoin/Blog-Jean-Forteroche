@@ -72,6 +72,21 @@ class ChapterController extends Controller {
         echo $this->render("home.twig",['chapter' => $chapterLast]);
     }
 
+    public function chapterSave()
+    {
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+
+        $chapterManager = new ChapterManager();
+        $chapterManager->saveChapter($title, $content);
+
+        echo "<script>alert(\"Ce chapitre a bien été sauvegardé.\")</script>";
+
+        $chapterLast =$chapterManager->getLastChapter();
+
+        echo $this->render("home.twig",['chapter' => $chapterLast]);
+    }
+
     /**
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
