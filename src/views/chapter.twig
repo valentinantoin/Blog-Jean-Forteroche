@@ -16,12 +16,15 @@
 
         {% if session.admin is defined %}
 
+<div class="btncontainer">
+
               <a class="controls" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=modchap&id={{ chapter.id }}">
                 <button type="button" class="btn btnChap btn-warning">Modifier ce chapitre</button>
               </a>
               <a class="controls" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delchap&id={{ chapter.id }}">
                 <button type="button" class="btn btnChap btn-danger">Supprimer ce chapitre</button>
               </a>
+</div>
 
         {% endif %}
 

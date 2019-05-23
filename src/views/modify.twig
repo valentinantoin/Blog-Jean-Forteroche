@@ -4,6 +4,8 @@
 
 {% block content %}
 
+    <main>
+
     <h1>Modification du chapitre</h1>
 
     <form method="post" action="https://jeanforteroche.valentin-antoin.fr/index.php?acces=upchap&id={{ chapter.id }}">
@@ -18,8 +20,12 @@
         <textarea class="form-control" aria-label="content" name="content">{{ chapter.content }}</textarea>
 
         <button type="submit" class="btn btn-primary">Envoyer</button>
+        <button type="submit" class="btn btn-warning" formaction="https://jeanforteroche.valentin-antoin.fr/index.php?acces=savechap">Sauvegarder</button>
+
 
     </form>
+
+    </main>
 
 {% endblock %}
 
