@@ -26,7 +26,7 @@
         <h2 class="card-header">{{ chapter.title | nl2br}}</h2>
         <div class="card-body">
             <h3 class="card-text">{{ chapter.creation_date_fr }}</h3>
-            <p class="card-text">{{ chapter.content | nl2br | slice(0, 250) }}</p>
+            <p class="card-text">{{ chapter.content | slice(0, 250) | nl2br }}</p>
             <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=chapter&id={{ chapter.id }}" class="card-link">Lire plus...</a>
         </div>
     </section>
