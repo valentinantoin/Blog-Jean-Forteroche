@@ -44,7 +44,7 @@ class UserController extends Controller {
             }
         }else
             {
-            echo "Les mots de passe ne correspondent pas !";
+                echo "<script>alert(\"Les mots de passe ne correspondent pas\")</script>";
             }
     }
 
