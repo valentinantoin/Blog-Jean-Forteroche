@@ -152,11 +152,11 @@ img {
 
     .carousel-inner{
         height: 300px;
-        margin-top: 3rem;
     }
 
     main{
         margin-top: 2rem;
+        padding-top: 6rem;
     }
 
     h1{
@@ -189,6 +189,10 @@ img {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+    }
+
+    .carousel-inner {
+        display: none;
     }
 
     .btn{
