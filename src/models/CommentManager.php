@@ -124,4 +124,16 @@ class CommentManager extends DbConnection
 
         return $nbComment;
     }
+
+    /**
+     * @return mixed
+     */
+    public function commentPbCount()
+    {
+        $req = $this->pdo->prepare('SELECT COUNT(*) AS nbCommentPb FROM comments WHERE report = "pb"');
+        $req->execute(array());
+        $nbCommentPB = $req->fetch(\PDO::FETCH_ASSOC);
+
+        return $nbCommentPB;
+    }
 }

@@ -84,8 +84,10 @@ class CommentController extends Controller
         $commentManager->deleteComment($id);
         $commentsList = $commentManager->listReportComments();
         $nbComment = $commentManager->commentCount();
+        $nbCommentPb = $commentManager->commentPbCount();
         $chapterManager = new ChapterManager();
         $nbChapter = $chapterManager->chapterCount();
+        $nbChapterHold = $chapterManager->chapterHoldCount();
         $chaptersHold = $chapterManager->getChaptersHold();
         $userManager = new UserManager();
         $nbUser = $userManager->userCount();
@@ -94,6 +96,8 @@ class CommentController extends Controller
             ['comments' => $commentsList,
                 'nbChapter' => $nbChapter['nbChapter'],
                 'nbComment' => $nbComment['nbComment'],
+                'nbCommentPb' => $nbCommentPb['nbCommentPb'],
+                'nbChapterHold' => $nbChapterHold['nbChapterHold'],
                 'chaptersHold' => $chaptersHold,
                 'nbUser' => $nbUser['nbUser']]);
     }
@@ -111,8 +115,10 @@ class CommentController extends Controller
         $commentManager->noReportComment($id);
         $commentsList = $commentManager->listReportComments();
         $nbComment = $commentManager->commentCount();
+        $nbCommentPb = $commentManager->commentPbCount();
         $chapterManager = new ChapterManager();
         $nbChapter = $chapterManager->chapterCount();
+        $nbChapterHold = $chapterManager->chapterHoldCount();
         $chaptersHold = $chapterManager->getChaptersHold();
         $userManager = new UserManager();
         $nbUser = $userManager->userCount();
@@ -120,7 +126,9 @@ class CommentController extends Controller
         echo $this->render("admin.twig",
             ['comments' => $commentsList,
                 'nbChapter' => $nbChapter['nbChapter'],
+                'nbChapterHold' => $nbChapterHold['nbChapterHold'],
                 'nbComment' => $nbComment['nbComment'],
+                'nbCommentPb' => $nbCommentPb['nbCommentPb'],
                 'chaptersHold' => $chaptersHold,
                 'nbUser' => $nbUser['nbUser']]);
     }

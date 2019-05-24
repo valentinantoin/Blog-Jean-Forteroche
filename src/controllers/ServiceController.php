@@ -22,6 +22,7 @@ class ServiceController extends Controller {
         $commentManager = new CommentManager();
         $commentsList = $commentManager->listReportComments();
         $nbComment = $commentManager->commentCount();
+        $nbCommentPb = $commentManager->commentPbCount();
         $chapterManager = new ChapterManager();
         $nbChapter = $chapterManager->chapterCount();
         $nbChapterHold = $chapterManager->chapterHoldCount();
@@ -35,6 +36,7 @@ class ServiceController extends Controller {
                 'nbChapterHold' => $nbChapterHold['nbChapterHold'],
                 'chaptersHold' => $chaptersHold,
                 'nbComment' => $nbComment['nbComment'],
+                'nbCommentPb' => $nbCommentPb['nbCommentPb'],
                 'nbUser' => $nbUser['nbUser']]);
     }
 
