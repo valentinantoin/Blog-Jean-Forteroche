@@ -23,6 +23,11 @@ class ChapterManager extends DbConnection
         return $newChapter;
     }
 
+    /**
+     * @param $title
+     * @param $content
+     * @return bool
+     */
     public function saveChapter($title, $content)
     {
         $req = $this->pdo->prepare('INSERT INTO chapters(title, content, creation_date, state) VALUES(?, ?, NOW(), "hold")');
@@ -55,6 +60,9 @@ class ChapterManager extends DbConnection
         return $chapters;
     }
 
+    /**
+     * @return array
+     */
     public function getChaptersHold()
     {
         $req = $this->pdo->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters WHERE state = "hold" ORDER BY id ASC');

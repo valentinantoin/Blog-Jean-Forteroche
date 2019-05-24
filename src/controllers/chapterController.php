@@ -72,6 +72,11 @@ class ChapterController extends Controller {
         echo $this->render("home.twig",['chapter' => $chapterLast]);
     }
 
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function chapterSave()
     {
         $title = $_POST['title'];
