@@ -1,41 +1,42 @@
 {% extends "layout.twig" %}
 
-
 {% block title %} {{ chapter.title }} {% endblock %}
 
 {% block content %}
 
+<!--   CHAPTER SECTION   -->
+    <section>
 
-    <h1>{{ chapter.title | nl2br}}</h1>
+        <h1>{{ chapter.title | nl2br}}</h1>
 
-    <div class="chapterContent">
+        <div class="chapterContent">
 
-        <p>{{ chapter.content | nl2br}}</p>
+            <p>{{ chapter.content | nl2br}}</p>
 
-        {% if session.admin is defined %}
+            {% if session.admin is defined %}
 
-<div class="btncontainer">
+            <div class="btncontainer">
 
-              <a class="controls" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=modchap&id={{ chapter.id }}">
-                <button type="button" class="btn btnChap btn-warning">Modifier ce chapitre</button>
-              </a>
-              <a class="controls" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delchap&id={{ chapter.id }}">
-                <button type="button" class="btn btnChap btn-danger">Supprimer ce chapitre</button>
-              </a>
-</div>
+                  <a class="controls" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=modchap&id={{ chapter.id }}">
+                    <button type="button" class="btn btnChap btn-warning">Modifier ce chapitre</button>
+                  </a>
+                  <a class="controls" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delchap&id={{ chapter.id }}">
+                    <button type="button" class="btn btnChap btn-danger">Supprimer ce chapitre</button>
+                  </a>
+            </div>
 
-        {% endif %}
+            {% endif %}
 
-    </div>
+        </div>
 
+    </section>
 
 {% endblock %}
 
 
 {% block comments %}
 
-
-
+<!--   COMMENTS SECTION   -->
     <h2>Commentaires : </h2>
 
     {% for comment in comments %}
@@ -47,7 +48,7 @@
 
                 {% if session.pseudo is defined %}
 
-                    <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=reportcom&id={{ chapter.id }}&com={{ comment.id }}">Signaler ce commentaire.</a>
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=reportcom&id={{ chapter.id }}&com={{ comment.id }}">Signaler ce commentaire.</a>
 
                 {% endif %}
 
@@ -57,9 +58,7 @@
 
     {% endfor %}
 
-
-
-
+<!--   ADD COMMENT   -->
     {% if session.pseudo is defined %}
 
     <form method="post" action="https://jeanforteroche.valentin-antoin.fr/index.php?acces=postcom&id={{ chapter.id }}">
@@ -72,6 +71,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Envoyer</button>
+
     </form>
 
     {% endif %}

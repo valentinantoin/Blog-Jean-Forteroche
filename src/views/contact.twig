@@ -4,8 +4,6 @@
 
 {% block content %}
 
-
-
     <h1>Contactez moi !</h1>
 
     <form method="post" action="https://jeanforteroche.valentin-antoin.fr/index.php?acces=sendmail">
@@ -16,21 +14,23 @@
             </div>
             <input id="name" type="text" class="form-control" placeholder="Nom" aria-label="Username" name="name" aria-describedby="addon-wrapping" required>
         </div>
+
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
                 <label for="mail" class="input-group-text" id="addon-wrapping">Votre e-mail</label>
             </div>
             <input id="mail" type="email" class="form-control" placeholder="Mail" aria-label="mail" name="mail" aria-describedby="addon-wrapping" required>
         </div>
+
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
                 <label for="message" class="input-group-text" id="addon-wrapping">Votre message</label>
             </div>
             <textarea id="message" class="form-control" aria-label="With textarea" name="message" required></textarea>
         </div>
+
         <button type="submit" class="btn btn-primary">Envoyer</button>
 
     </form>
-
 
 {% endblock %}

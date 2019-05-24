@@ -4,7 +4,7 @@
 
 {% block content %}
 
-
+<!--   DASHBOARD   -->
     <section>
 
         <h1 class="mt">Bienvenue dans votre espace d'administration Jean</h1>
@@ -30,73 +30,79 @@
 
     </section>
 
+
+<!--   NEW CHAPTER TEXTAREA   -->
     <section>
 
-    <h2 class="mt" id="newchap">Vous pouvez saisir ici un nouveau chapitre.</h2>
+        <h2 class="mt" id="newchap">Vous pouvez saisir ici un nouveau chapitre.</h2>
 
-    <form method="post" action="https://jeanforteroche.valentin-antoin.fr/index.php?acces=postchap">
+        <form method="post" action="https://jeanforteroche.valentin-antoin.fr/index.php?acces=postchap">
 
-        <div class="input-group flex-nowrap">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="addon-wrapping">Titre</span>
+            <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">Titre</span>
+                </div>
+                <input type="text" class="form-control" aria-label="title" name="title" aria-describedby="addon-wrapping">
             </div>
-            <input type="text" class="form-control" aria-label="title" name="title" aria-describedby="addon-wrapping">
-        </div>
 
-            <textarea class="form-control" aria-label="content" name="content"></textarea>
+            <textarea class="form-control" aria-label="content" name="content" rows="22" cols ="100"></textarea>
 
-       <button type="submit" class="btn btn-primary">Publier</button>
-        <button type="submit" class="btn btn-warning" formaction="https://jeanforteroche.valentin-antoin.fr/index.php?acces=savechap">Sauvegarder</button>
+            <button type="submit" class="btn btnadmin btn-primary">Publier</button>
+            <button type="submit" class="btn btnadmin btn-warning" formaction="https://jeanforteroche.valentin-antoin.fr/index.php?acces=savechap">Sauvegarder</button>
 
-    </form>
+        </form>
+
     </section>
 
+
+<!--   CHAPTERS IN PROGRESS   -->
     <section>
 
-
-    <h2 class="mt" id="savechap">Retrouvez ici tous les chapitres en attente.</h2>
+        <h2 class="mt" id="savechap">Retrouvez ici tous les chapitres en attente.</h2>
 
         {% for chapterHold in chaptersHold %}
 
-            <div class="card">
-                <h2 class="card-header">{{ chapterHold.title | nl2br}}</h2>
-                <div class="card-body">
-                    <h3 class="card-text">{{ chapterHold.creation_date_fr }}</h3>
-                    <p class="card-text">{{ chapterHold.content | nl2br }}</p>
-                    <div class="btncontainer">
-                    <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=modchap&id={{ chapterHold.id }}"><button type="button" class="btn btnAdmin btn-warning">Continuer</button></a>
-                    <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delchap&id={{ chapterHold.id }}"><button type="button" class="btn btnAdmin btn-danger">Supprimer</button></a>
-                    </div>
+        <div class="card">
+            <h2 class="card-header">{{ chapterHold.title | nl2br}}</h2>
+            <div class="card-body">
+                <h3 class="card-text">{{ chapterHold.creation_date_fr }}</h3>
+                <p class="card-text">{{ chapterHold.content | nl2br }}</p>
+                <div class="btncontainer">
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=modchap&id={{ chapterHold.id }}"><button type="button" class="btn btnAdmin btn-warning">Continuer</button></a>
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delchap&id={{ chapterHold.id }}"><button type="button" class="btn btnAdmin btn-danger">Supprimer</button></a>
                 </div>
             </div>
+        </div>
 
         {% endfor %}
 
     </section>
+
+
+<!--   COMMENTS MODERATION   -->
     <section>
 
         <h2 class="mt" id="comments">Retrouvez ici tous les commentaires qui sont signalés.</h2>
 
         {%  for comment in comments %}
 
-            <div class="card">
-                <h5 class="card-header">Posté par : {{ comment.user_pseudo }}, le :{{ comment.creation_date_fr }}</h5>
-                <div class="card-body">
-                    <p class="card-text">{{ comment.content }}</p>
-                    <div class="btncontainer">
-                    <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=valcom&id={{ comment.id }}"><button type="button" class="btn btnAdmin btn-primary">Valider</button></a>
-                    <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delcom&id={{ comment.id }}"><button type="button" class="btn btnAdmin btn-danger">Supprimer</button></a>
-                    </div>
+        <div class="card">
+            <h5 class="card-header">Posté par : {{ comment.user_pseudo }}, le :{{ comment.creation_date_fr }}</h5>
+            <div class="card-body">
+                <p class="card-text">{{ comment.content }}</p>
+                <div class="btncontainer">
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=valcom&id={{ comment.id }}"><button type="button" class="btn btnAdmin btn-primary">Valider</button></a>
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delcom&id={{ comment.id }}"><button type="button" class="btn btnAdmin btn-danger">Supprimer</button></a>
                 </div>
             </div>
+        </div>
 
         {% endfor %}
-
-
 
     </section>
 
 {% endblock %}
+
 
 {% block script %}
 
@@ -106,8 +112,8 @@
             language : "fr_FR",
             forced_root_block : false,
             force_br_newlines : true,
-            force_p_newlines : false}
-        );</script>
+            force_p_newlines : false
+    });</script>
 
 {% endblock %}
 

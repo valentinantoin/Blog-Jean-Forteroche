@@ -2,25 +2,25 @@
 
 {% block title %} Bienvenue sur le blog de Jean ! {% endblock %}
 
-
 {% block content %}
 
+<!--   CAROUSEL   -->
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <figure class="carousel-item active">
                 <img src="img/alaska1.jpg" class="d-block w-100" alt="aurore boreale">
-            </div>
-            <div class="carousel-item">
+            </figure>
+            <figure class="carousel-item">
                 <img src="img/alaska2.jpg" class="d-block w-100" alt="paysage de montagne">
-            </div>
-            <div class="carousel-item">
+            </figure>
+            <figure class="carousel-item">
                 <img src="img/alaska3.jpg" class="d-block w-100" alt="route de montagne">
-            </div>
+            </figure>
         </div>
     </div>
 
+<!--   LAST CHAPTER SECTION   -->
     <h1>Voici le dernier chapitre publié : </h1>
-
 
     <section class="card border-dark">
         <h2 class="card-header">{{ chapter.title | nl2br}}</h2>
@@ -30,6 +30,5 @@
             <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=chapter&id={{ chapter.id }}" class="card-link">Lire plus...</a>
         </div>
     </section>
-
 
 {% endblock %}

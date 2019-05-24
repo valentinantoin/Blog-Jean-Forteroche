@@ -5,7 +5,7 @@
 $loader = new Twig_Loader_Filesystem( '../src/Views');
 $twig = new Twig_Environment($loader, [
     'cache' => false,
-    'debug' => true,
+    'debug' => true
 ]);
 $twig->addGlobal('session', $_SESSION);
 $twig->addExtension(new \Twig\Extension\DebugExtension());
