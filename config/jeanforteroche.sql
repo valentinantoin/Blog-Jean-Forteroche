@@ -17,57 +17,50 @@ USE jeanforteroche;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 -- --------------------------------------------------------
 
---
--- Creates 'users' table
---
-
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
-  `pseudo` varchar(255) NOT NULL,
-  `mail` varchar(255) NOT NULL,
-  `pass` varchar(255) NOT NULL,
-  `creation_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-COMMIT;
-
--- --------------------------------------------------------
 
 --
 -- Creates 'chapters' table
 --
 
-DROP TABLE IF EXISTS `chapters`;
-CREATE TABLE IF NOT EXISTS `chapters` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
+CREATE TABLE `chapters` (
+  `id` smallint PRIMARY KEY NOT NULL,
+  `title` varchar NOT NULL,
   `content` text NOT NULL,
-  `creation_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `creation_date` date DEFAULT NULL,
+  `state` varchar NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
 
 --
 -- Creates 'comments' table
 --
 
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE IF NOT EXISTS `comments` (
-  `id` int(200) NOT NULL AUTO_INCREMENT,
-  `chapters_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `content` varchar(255) NOT NULL,
+CREATE TABLE `comments` (
+  `id` smallint PRIMARY KEY NOT NULL,
+  `chapter_id` smallint NOT NULL,
+  `user_pseudo` varchar NOT NULL,
+  `content` varchar NOT NULL,
   `creation_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `report` varchar DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
+-- Creates 'users' table
+--
+
+CREATE TABLE `users` (
+  `id` smallint PRIMARY KEY NOT NULL,
+  `pseudo` varchar UNIQUE KEY NOT NULL,
+  `mail` varchar NOT NULL,
+  `pass` varchar NOT NULL,
+  `creation_date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
