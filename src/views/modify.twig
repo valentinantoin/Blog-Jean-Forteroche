@@ -15,10 +15,10 @@
             <input id="title" type="text" class="form-control" aria-label="title" name="title" aria-describedby="addon-wrapping" placeholder="{{ chapter.title }}">
         </div>
 
-        <textarea class="form-control" aria-label="content" name="content">{{ chapter.content }}</textarea>
+        <textarea class="form-control" aria-label="content" name="content" rows="22" cols ="100">{{ chapter.content }}</textarea>
 
         <button type="submit" class="btn btn-primary">Envoyer</button>
-        <button type="submit" class="btn btn-warning" formaction="https://jeanforteroche.valentin-antoin.fr/index.php?acces=savechap">Sauvegarder</button>
+        <button type="submit" class="btn btn-warning" formaction="https://jeanforteroche.valentin-antoin.fr/index.php?acces=resavechap&id={{ chapter.id }}">Sauvegarder</button>
 
     </form>
 

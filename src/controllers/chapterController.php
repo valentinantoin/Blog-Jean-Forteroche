@@ -145,4 +145,19 @@ class ChapterController extends Controller {
 
         echo $this->render('chapter.twig', ['chapter' => $chapter]);
     }
+
+    /**
+     *
+     */
+    public function updateChapHold() {
+
+        $id = $_GET['id'];
+        $new_title = $_POST['title'];
+        $new_content = $_POST['content'];
+
+        $chapterManager = new ChapterManager();
+        $chapterManager->updateChapterHold($id, $new_title, $new_content);
+
+        header('Location: ../index.php?acces=admin');
+    }
 }

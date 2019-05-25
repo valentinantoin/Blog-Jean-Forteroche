@@ -102,6 +102,12 @@ switch ($page) {
         $addChapter = $chapterController->chapterSave();
         break;
 
+    case "resavechap" :
+        require ('ChapterController.php');
+        $chapterController = new ChapterController($twig);
+        $addChapter = $chapterController->updateChapHold();
+        break;
+
     case "delchap" :
         require ('ChapterController.php');
         $chapterController = new ChapterController($twig);

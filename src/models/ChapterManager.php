@@ -102,6 +102,21 @@ class ChapterManager extends DbConnection
 
     /**
      * @param $id
+     * @param $new_title
+     * @param $new_content
+     */
+    public function updateChapterHold($id, $new_title, $new_content)
+    {
+        $req = $this->pdo->prepare('UPDATE chapters SET title = :new_title, content = :new_content, creation_date = NOW(), state = "hold" WHERE id =:id');
+        $req->execute(array(
+            'new_content' => $new_content,
+            'new_title' => $new_title,
+            'id' => $id
+        ));
+    }
+
+    /**
+     * @param $id
      */
     public function deleteChapter($id)
     {
