@@ -70,14 +70,13 @@ class ServiceController extends Controller {
         echo $this->render('subscribe.twig');
     }
 
+
     /**
      *
      */
     public function disconnection()
     {
         session_destroy();
-
-        echo "<script>alert(\"Vous êtes maintenant déconnecté\")</script>";
 
         header('Location: ../index.php');
     }
