@@ -15,7 +15,7 @@ body {
     min-height: 100%;
     margin: 0;
     position: relative;
-    padding-bottom: 10rem;
+    padding-bottom: 7rem;
 }
 
 .controls {
@@ -59,8 +59,8 @@ h2 {
 footer {
     display: flex;
     justify-content: space-around;
-    padding: 2rem;
-    margin-top: 3rem;
+    padding: 1rem;
+    margin-top: 2rem;
     border-top: 6px solid #343a40;
     -webkit-border-radius: 30%;
     -moz-border-radius: 30%;
@@ -69,6 +69,10 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+.linkoff {
+    color: #000;
 }
 
 
