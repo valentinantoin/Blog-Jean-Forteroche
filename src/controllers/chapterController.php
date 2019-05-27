@@ -67,15 +67,14 @@ class ChapterController extends Controller {
 
         echo "<script>alert(\"Ce chapitre a bien été ajouté.\")</script>";
 
-        $chapterLast =$chapterManager->getLastChapter();
+        $chapters = $chapterManager->getChapterPage();
 
-        echo $this->render("home.twig",['chapter' => $chapterLast]);
+        echo $this->render("chapters.twig",['chapters' => $chapters]);
     }
 
+
     /**
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
+     *
      */
     public function chapterSave()
     {
@@ -87,9 +86,7 @@ class ChapterController extends Controller {
 
         echo "<script>alert(\"Ce chapitre a bien été sauvegardé.\")</script>";
 
-        $chapterLast =$chapterManager->getLastChapter();
-
-        echo $this->render("home.twig",['chapter' => $chapterLast]);
+        echo "<script>window.location = '../index.php?acces=admin'</script>";
     }
 
     /**

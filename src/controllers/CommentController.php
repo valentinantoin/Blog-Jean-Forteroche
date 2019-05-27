@@ -4,7 +4,6 @@
 use App\Controllers\Controller;
 use App\Models\CommentManager;
 use App\Models\ChapterManager;
-use App\Models\UserManager;
 
 
 /**
@@ -71,10 +70,9 @@ class CommentController extends Controller
         echo $this->render("chapter.twig", ['chapter' => $chapter, 'comments' => $comments]);
     }
 
+
     /**
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
+     *
      */
     public function deleteComment()
     {
@@ -82,30 +80,14 @@ class CommentController extends Controller
 
         $commentManager = new CommentManager();
         $commentManager->deleteComment($id);
-        $commentsList = $commentManager->listReportComments();
-        $nbComment = $commentManager->commentCount();
-        $nbCommentPb = $commentManager->commentPbCount();
-        $chapterManager = new ChapterManager();
-        $nbChapter = $chapterManager->chapterCount();
-        $nbChapterHold = $chapterManager->chapterHoldCount();
-        $chaptersHold = $chapterManager->getChaptersHold();
-        $userManager = new UserManager();
-        $nbUser = $userManager->userCount();
 
-        echo $this->render("admin.twig",
-            ['comments' => $commentsList,
-                'nbChapter' => $nbChapter['nbChapter'],
-                'nbComment' => $nbComment['nbComment'],
-                'nbCommentPb' => $nbCommentPb['nbCommentPb'],
-                'nbChapterHold' => $nbChapterHold['nbChapterHold'],
-                'chaptersHold' => $chaptersHold,
-                'nbUser' => $nbUser['nbUser']]);
+        echo "<script>window.location = '../index.php?acces=admin#comments'</script>";
+
     }
 
+
     /**
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
+     *
      */
     public function validComment()
     {
@@ -113,23 +95,8 @@ class CommentController extends Controller
 
         $commentManager = new CommentManager();
         $commentManager->noReportComment($id);
-        $commentsList = $commentManager->listReportComments();
-        $nbComment = $commentManager->commentCount();
-        $nbCommentPb = $commentManager->commentPbCount();
-        $chapterManager = new ChapterManager();
-        $nbChapter = $chapterManager->chapterCount();
-        $nbChapterHold = $chapterManager->chapterHoldCount();
-        $chaptersHold = $chapterManager->getChaptersHold();
-        $userManager = new UserManager();
-        $nbUser = $userManager->userCount();
 
-        echo $this->render("admin.twig",
-            ['comments' => $commentsList,
-                'nbChapter' => $nbChapter['nbChapter'],
-                'nbChapterHold' => $nbChapterHold['nbChapterHold'],
-                'nbComment' => $nbComment['nbComment'],
-                'nbCommentPb' => $nbCommentPb['nbCommentPb'],
-                'chaptersHold' => $chaptersHold,
-                'nbUser' => $nbUser['nbUser']]);
+        echo "<script>window.location = '../index.php?acces=admin#comments'</script>";
+
     }
 }
