@@ -84,7 +84,7 @@ class CommentManager extends DbConnection
      */
     public function listReportComments()
     {
-        $req = $this->pdo->prepare('SELECT id, user_pseudo, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i \') AS creation_date_fr FROM comments WHERE report = "pb" ' );
+        $req = $this->pdo->prepare('SELECT id, user_pseudo, content, chapter_id, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i \') AS creation_date_fr FROM comments WHERE report = "pb" ' );
         $req->execute();
         $commentList = $req->fetchAll();
 
