@@ -15,7 +15,7 @@
                 <span class="badge badge-secondary badge-pill">{{ nbChapter }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                Nombre de chapitre en attente
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin#savechap" class="linkoff">Nombre de chapitre en attente</a>
                 <span class="badge badge-secondary badge-pill">{{ nbChapterHold }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -23,7 +23,7 @@
                 <span class="badge badge-secondary badge-pill">{{ nbComment }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                Nombre de commentaire signalé
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin#comments" class="linkoff">Nombre de commentaire signalé</a>
                 <span class="badge badge-secondary badge-pill">{{ nbCommentPb }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -91,7 +91,7 @@
         {%  for comment in comments %}
 
         <div class="card">
-            <h5 class="card-header">Posté par : {{ comment.user_pseudo }}, le :{{ comment.creation_date_fr }}</h5>
+            <h5 class="card-header">Posté par : {{ comment.user_pseudo }}, le :{{ comment.creation_date_fr }} à propos du chapitre {{ comment.chapter_id }}</h5>
             <div class="card-body">
                 <p class="card-text">{{ comment.content }}</p>
                 <div class="btncontainer">
