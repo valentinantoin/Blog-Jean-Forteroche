@@ -72,11 +72,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=chapters">Chapitres <span class="sr-only"></span></a>
                     </li>
-                    {% if session.admin is not defined %}
                     <li class="nav-item">
                         <a class="nav-link" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=presentation">Présentation</a>
                     </li>
-                    <li class="nav-item">
+                    {% if session.admin is not defined %}
+                        <li class="nav-item">
                         <a class="nav-link" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=contact">Contact</a>
                     </li>
                     {% endif %}
@@ -96,7 +96,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin">Accueil</a>
+                                <a class="dropdown-item" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin">Tableau de bord</a>
                                 <a class="dropdown-item" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin#newchap">Nouveau chapitre</a>
                                 <a class="dropdown-item" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin#savechap">Chapitres en attente </a>
                                 <a class="dropdown-item" href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin#comments">modération</a>

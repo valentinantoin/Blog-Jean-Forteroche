@@ -47,7 +47,10 @@ class ServiceController extends Controller {
      */
     public function presentationLoad()
     {
-        echo $this->render('presentation.twig');
+        $chapterManager = new ChapterManager();
+        $chapter = $chapterManager->getChapter(0);
+
+        echo $this->render('presentation.twig', ['presentation' => $chapter]);
     }
 
     /**
