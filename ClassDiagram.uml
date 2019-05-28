@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>PHP</ID>
+  <OriginalElement>C:/Users/USER/Desktop/P4/src</OriginalElement>
+  <nodes>
+    <node x="0.0" y="631.0">\App\Controllers\CommentController</node>
+    <node x="0.0" y="124.0">\App\Models\CommentManager</node>
+    <node x="435.5" y="0.0">\config\DbConnection</node>
+    <node x="346.0" y="587.0">\App\Controllers\ChapterController</node>
+    <node x="170.0" y="609.0">\App\Controllers\ServiceController</node>
+    <node x="521.0" y="664.0">\App\Controllers\UserController</node>
+    <node x="252.25" y="440.0">\App\Controllers\Controller</node>
+    <node x="699.0" y="124.0">\App\Models\ChapterManager</node>
+    <node x="332.0" y="179.0">\App\Models\UserManager</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="\App\Models\ChapterManager" target="\config\DbConnection">
+      <point x="0.0" y="-135.5" />
+      <point x="852.0" y="99.0" />
+      <point x="552.1666666666666" y="99.0" />
+      <point x="46.66666666666663" y="37.0" />
+    </edge>
+    <edge source="\App\Controllers\UserController" target="\App\Controllers\Controller">
+      <point x="0.0" y="-36.5" />
+      <point x="583.0" y="557.0" />
+      <point x="398.375" y="557.0" />
+      <point x="62.625" y="48.5" />
+    </edge>
+    <edge source="\App\Models\CommentManager" target="\config\DbConnection">
+      <point x="0.0" y="-135.5" />
+      <point x="156.0" y="99.0" />
+      <point x="458.8333333333333" y="99.0" />
+      <point x="-46.666666666666686" y="37.0" />
+    </edge>
+    <edge source="\App\Controllers\ServiceController" target="\App\Controllers\Controller">
+      <point x="0.0" y="-91.5" />
+      <point x="248.0" y="567.0" />
+      <point x="314.875" y="567.0" />
+      <point x="-20.875" y="48.5" />
+    </edge>
+    <edge source="\App\Controllers\CommentController" target="\App\Controllers\Controller">
+      <point x="0.0" y="-69.5" />
+      <point x="75.0" y="557.0" />
+      <point x="273.125" y="557.0" />
+      <point x="-62.625" y="48.5" />
+    </edge>
+    <edge source="\App\Models\UserManager" target="\config\DbConnection">
+      <point x="0.0" y="-80.5" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="\App\Controllers\ChapterController" target="\App\Controllers\Controller">
+      <point x="0.0" y="-113.5" />
+      <point x="423.5" y="567.0" />
+      <point x="356.625" y="567.0" />
+      <point x="20.875" y="48.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="284.0" y="412.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constants</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
