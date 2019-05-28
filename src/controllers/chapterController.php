@@ -37,7 +37,7 @@ class ChapterController extends Controller {
         $commentManager = new CommentManager();
         $comments = $commentManager->getComment($id);
 
-        if ($id == 0){
+        if ($id == 1){
 
             echo $this->render('presentation.twig', ['presentation' => $chapter]);
         }else
@@ -146,7 +146,7 @@ class ChapterController extends Controller {
         $chapterManager->updateChapter($id, $new_title, $new_content);
         $chapter = $chapterManager->getChapter($id);
 
-        if ($id == 0){
+        if ($id == 1){
 
             echo $this->render('presentation.twig', ['presentation' => $chapter]);
         }else

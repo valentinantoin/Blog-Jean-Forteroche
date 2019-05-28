@@ -49,7 +49,7 @@ class ServiceController extends Controller {
     public function presentationLoad()
     {
         $chapterManager = new ChapterManager();
-        $chapter = $chapterManager->getChapter(0);
+        $chapter = $chapterManager->getChapter(1);
 
         echo $this->render('presentation.twig', ['presentation' => $chapter]);
     }
