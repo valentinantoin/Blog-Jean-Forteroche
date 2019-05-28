@@ -1,6 +1,7 @@
 <?php
 
-use App\Controllers\Controller;
+namespace App\Controllers;
+
 use App\Models\CommentManager;
 use App\Models\ChapterManager;
 use App\Models\UserManager;

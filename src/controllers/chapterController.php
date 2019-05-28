@@ -1,6 +1,7 @@
 <?php
 
-use App\Controllers\Controller;
+namespace App\Controllers;
+
 use App\Models\ChapterManager;
 use App\Models\CommentManager;
 
@@ -152,6 +153,7 @@ class ChapterController extends Controller {
 
             echo $this->render("chapter.twig",['chapter' => $chapter]);
     }
+
 
     /**
      *

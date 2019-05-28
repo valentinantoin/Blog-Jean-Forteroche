@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use Twig\Environment;
+
 /**
  * Class Controller
  * @package App\Controllers
@@ -13,11 +15,12 @@ abstract class Controller {
      */
     private $twig;
 
+
     /**
      * Controller constructor.
-     * @param \Twig_Environment $twig
+     * @param Environment $twig
      */
-    public function __construct(\Twig_Environment $twig)
+    public function __construct(Environment $twig)
     {
         $this->twig = $twig;
     }
