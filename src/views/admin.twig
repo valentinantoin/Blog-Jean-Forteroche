@@ -12,11 +12,11 @@
         <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin#savechap" class="linkoff">Nombre de chapitre en attente</a>
-                <span class="badge badge-secondary badge-pill">{{ nbChapterHold }}</span>
+                <span class="badge badge-primary badge-pill">{{ nbChapterHold }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin#comments" class="linkoff">Nombre de commentaire signalé</a>
-                <span class="badge badge-secondary badge-pill">{{ nbCommentPb }}</span>
+                <span class="badge badge-primary badge-pill">{{ nbCommentPb }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a class="linkoff">   //  Informations générales  //   </a>
@@ -69,7 +69,7 @@
 
         {% for chapterHold in chaptersHold %}
 
-        <div class="card">
+        <div class="card bg-light">
             <h2 class="card-header">{{ chapterHold.title | nl2br}}</h2>
             <div class="card-body">
                 <h3 class="card-text">{{ chapterHold.creation_date_fr }}</h3>
@@ -93,8 +93,8 @@
 
         {%  for comment in comments %}
 
-        <div class="card">
-            <h5 class="card-header">Posté par : {{ comment.user_pseudo }}, le :{{ comment.creation_date_fr }} // <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=chapter&id={{ comment.chapter_id }}"> Lien vers le chapitre</a> </h5>
+        <div class="card bg-light">
+            <h5 class="card-header">Posté par : {{ comment.user_pseudo }}, le :{{ comment.creation_date_fr }} // <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=chapter&id={{ comment.chapter_id }}" class="linkoff"> Lien vers le chapitre</a> </h5>
             <div class="card-body">
                 <p class="card-text">{{ comment.content }}</p>
                 <div class="btncontainer">

@@ -72,17 +72,20 @@ footer {
 }
 
 .linkoff {
-    color: #000;
+    color: #325D88;
 }
 
 
 /*---   CARDS   ---*/
 
 .card {
-    font-family: sofia, serif;
     width: 80%;
     margin-left: 10%;
     margin-bottom: 1rem;
+}
+
+.card h2 {
+    font-family: sofia, serif;
 }
 
 .chapterContent {
