@@ -6,7 +6,7 @@
 
     <h1>Modification du chapitre</h1>
 
-    <form method="post" action="https://jeanforteroche.valentin-antoin.fr/index.php?acces=upchap&id={{ chapter.id }}">
+    <form method="post" action="https://jeanforteroche.valentin-antoin.fr/index.php?access=upchap&id={{ chapter.id }}">
 
         <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
@@ -18,7 +18,7 @@
         <textarea class="form-control" aria-label="content" name="content" rows="22" cols ="100">{{ chapter.content }}</textarea>
 
         <button type="submit" class="btn btn-primary">Envoyer</button>
-        <button type="submit" class="btn btn-warning" formaction="https://jeanforteroche.valentin-antoin.fr/index.php?acces=resavechap&id={{ chapter.id }}">Sauvegarder</button>
+        <button type="submit" class="btn btn-warning" formaction="https://jeanforteroche.valentin-antoin.fr/index.php?access=resavechap&id={{ chapter.id }}">Sauvegarder</button>
 
     </form>
 

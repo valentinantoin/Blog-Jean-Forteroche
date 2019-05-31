@@ -92,7 +92,7 @@ class ChapterController extends Controller {
 
         echo "<script>alert(\"Ce chapitre a bien été sauvegardé.\")</script>";
 
-        echo "<script>window.location = '../index.php?acces=admin'</script>";
+        echo "<script>window.location = '../index.php?access=admin'</script>";
     }
 
     /**

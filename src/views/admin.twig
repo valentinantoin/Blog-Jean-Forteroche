@@ -11,11 +11,11 @@
 
         <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin#savechap" class="linkoff">Nombre de chapitre en attente</a>
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?access=admin#savechap" class="linkoff">Nombre de chapitre en attente</a>
                 <span class="badge badge-primary badge-pill">{{ nbChapterHold }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=admin#comments" class="linkoff">Nombre de commentaire signalé</a>
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?access=admin#comments" class="linkoff">Nombre de commentaire signalé</a>
                 <span class="badge badge-primary badge-pill">{{ nbCommentPb }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -43,7 +43,7 @@
 
         <h2 class="mt" id="newchap">Vous pouvez saisir ici un nouveau chapitre.</h2>
 
-        <form method="post" action="https://jeanforteroche.valentin-antoin.fr/index.php?acces=postchap">
+        <form method="post" action="https://jeanforteroche.valentin-antoin.fr/index.php?access=postchap">
 
             <div class="input-group flex-nowrap">
                 <div class="input-group-prepend">
@@ -55,7 +55,7 @@
             <textarea class="form-control" aria-label="content" name="content" rows="22" cols ="100"></textarea>
 
             <button type="submit" class="btn btnadmin btn-primary">Publier</button>
-            <button type="submit" class="btn btnadmin btn-warning" formaction="https://jeanforteroche.valentin-antoin.fr/index.php?acces=savechap">Sauvegarder</button>
+            <button type="submit" class="btn btnadmin btn-warning" formaction="https://jeanforteroche.valentin-antoin.fr/index.php?access=savechap">Sauvegarder</button>
 
         </form>
 
@@ -75,8 +75,8 @@
                 <h3 class="card-text">{{ chapterHold.creation_date_fr }}</h3>
                 <p class="card-text">{{ chapterHold.content | nl2br }}</p>
                 <div class="btncontainer">
-                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=modchap&id={{ chapterHold.id }}"><button type="button" class="btn btnAdmin btn-warning">Continuer</button></a>
-                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delchap&id={{ chapterHold.id }}"><button type="button" class="btn btnAdmin btn-danger">Supprimer</button></a>
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?access=modchap&id={{ chapterHold.id }}"><button type="button" class="btn btnAdmin btn-warning">Continuer</button></a>
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?access=delchap&id={{ chapterHold.id }}"><button type="button" class="btn btnAdmin btn-danger">Supprimer</button></a>
                 </div>
             </div>
         </div>
@@ -98,8 +98,8 @@
             <div class="card-body">
                 <p class="card-text">{{ comment.content }}</p>
                 <div class="btncontainer">
-                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=valcom&id={{ comment.id }}"><button type="button" class="btn btnAdmin btn-primary">Valider</button></a>
-                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=delcom&id={{ comment.id }}"><button type="button" class="btn btnAdmin btn-danger">Supprimer</button></a>
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?access=valcom&id={{ comment.id }}"><button type="button" class="btn btnAdmin btn-primary">Valider</button></a>
+                <a href="https://jeanforteroche.valentin-antoin.fr/index.php?access=delcom&id={{ comment.id }}"><button type="button" class="btn btnAdmin btn-danger">Supprimer</button></a>
                 </div>
             </div>
         </div>
