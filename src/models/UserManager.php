@@ -44,7 +44,7 @@ class UserManager extends DbConnection
      */
     public function getUser($pseudo)
     {
-        $req = $this->pdo->prepare('SELECT pseudo, pass FROM users WHERE pseudo = ? ');
+        $req = $this->pdo->prepare('SELECT id, pseudo, pass FROM users WHERE pseudo = ? ');
         $req->execute(array($pseudo));
         $user = $req->fetch(\PDO::FETCH_ASSOC);
 

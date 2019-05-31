@@ -67,7 +67,7 @@ class UserController extends Controller {
             session_start();
             $_SESSION['pseudo'] = $pseudo;
 
-            if($pseudo == 'Jean' || $pseudo == 'Val' || $pseudo == 'usako' || $pseudo == 'philippe')
+            if($user['id'] < 5)
             {
                 $_SESSION['admin'] = true;
             }
