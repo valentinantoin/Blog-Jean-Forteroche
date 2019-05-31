@@ -14,8 +14,8 @@ use App\Controllers\CommentController;
 //TEMPLATES PREPARATION
 $loader = new FilesystemLoader( '../src/Views');
 $twig = new Environment($loader, [
-    'cache' => false,
-    'debug' => true
+    //'cache' => false,
+    'debug' => false
 ]);
 $twig->addGlobal('session', $_SESSION);
 $twig->addExtension(new DebugExtension());
