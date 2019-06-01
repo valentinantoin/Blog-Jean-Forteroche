@@ -94,7 +94,7 @@
         {%  for comment in comments %}
 
         <div class="card bg-light">
-            <h5 class="card-header">Posté par : {{ comment.user_pseudo }}, le :{{ comment.creation_date_fr }} // <a href="https://jeanforteroche.valentin-antoin.fr/index.php?acces=chapter&id={{ comment.chapter_id }}" class="linkoff"> Lien vers le chapitre</a> </h5>
+            <h5 class="card-header">Posté par : {{ comment.user_pseudo }}, le :{{ comment.creation_date_fr }} // <a href="https://jeanforteroche.valentin-antoin.fr/index.php?access=chapter&id={{ comment.chapter_id }}" class="linkoff"> Lien vers le chapitre</a> </h5>
             <div class="card-body">
                 <p class="card-text">{{ comment.content }}</p>
                 <div class="btncontainer">
