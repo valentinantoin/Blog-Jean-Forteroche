@@ -129,7 +129,7 @@ class ChapterManager extends DbConnection
      */
     public function chapterCount()
     {
-        $req = $this->pdo->prepare('SELECT COUNT(*) AS nbChapter FROM chapters WHERE state = "ok"');
+        $req = $this->pdo->prepare('SELECT COUNT(*) AS nbChapter FROM chapters WHERE state = "ok" AND id > 1');
         $req->execute(array());
         $nbChapter = $req->fetch(\PDO::FETCH_ASSOC);
 
