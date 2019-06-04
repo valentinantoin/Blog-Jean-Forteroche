@@ -53,7 +53,7 @@ class ChapterManager extends DbConnection
      */
     public function getChapterPage()
     {
-        $req = $this->pdo->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters WHERE state = "ok" AND id > 1 ORDER BY id ASC');
+        $req = $this->pdo->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters WHERE state = "ok" AND id > 1 ORDER BY id DESC');
         $req->execute();
         $chapters = $req->fetchAll();
 
