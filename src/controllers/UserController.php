@@ -34,7 +34,7 @@ class UserController extends Controller {
                 $userManager = new UserManager();
                 $userManager->addUser($pseudo, $mail, $pass);
 
-                header('Location: ../index.php?acces=connection');
+                header('Location: ../index.php?access=connection');
 
             }else
                 {
@@ -45,6 +45,8 @@ class UserController extends Controller {
         }else
             {
                 echo "<script>alert(\"Les mots de passe ne correspondent pas\")</script>";
+
+                echo $this->render('subscribe.twig');
             }
     }
 
@@ -67,7 +69,7 @@ class UserController extends Controller {
             session_start();
             $_SESSION['pseudo'] = $pseudo;
 
-            if($user['id'] < 5)
+            if($user['id'] < 2)
             {
                 $_SESSION['admin'] = true;
             }
