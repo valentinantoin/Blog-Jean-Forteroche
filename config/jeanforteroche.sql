@@ -33,7 +33,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `chapters` (
-  `id` smallint UNSIGNED PRIMARY KEY,
+  `id` smallint UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   `title` varchar(70) NOT NULL,
   `content` text NOT NULL,
   `creation_date` date NOT NULL,
@@ -47,30 +47,30 @@ INSERT INTO `chapters` (`id`, `title`, `content`, `creation_date`, `state`) VALU
 
 
 --
--- Creates 'comments' table
---
-
-CREATE TABLE `comments` (
-  `id` smallint UNSIGNED PRIMARY KEY,
-  `chapter_id` smallint NOT NULL,
-  `user_pseudo` varchar(70) NOT NULL,
-  `content` varchar(255) NOT NULL,
-  `creation_date` datetime DEFAULT NULL,
-  `report` varchar(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `comments` (`id`, `chapter_id`, `user_pseudo`, `content`, `creation_date`, `report`) VALUES
-(1, 2, 'visiteur', 'Commentaire de test', '2019-05-15 17:12:32', 'ok');
-
-
---
 -- Creates 'users' table
 --
 
 CREATE TABLE `users` (
-  `id` smallint UNSIGNED PRIMARY KEY,
-  `pseudo` varchar(70) UNIQUE KEY NOT NULL,
+  `id` smallint UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  `pseudo` varchar(70) UNIQUE NOT NULL,
   `mail` varchar(70) NOT NULL,
   `pass` varchar(70) NOT NULL,
   `creation_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+--
+-- Creates 'comments' table
+--
+
+CREATE TABLE `comments` (
+  `id` smallint UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  `chapter_id` smallint UNSIGNED NOT NULL,
+  CONSTRAINT fk_chapter_id FOREIGN KEY (chapter_id) REFERENCES chapters(id),
+  `user_pseudo` varchar(70)  NOT NULL,
+  CONSTRAINT fk_user_pseudo FOREIGN KEY (user_pseudo) REFERENCES users(pseudo),
+  `content` varchar(255) NOT NULL,
+  `creation_date` datetime DEFAULT NULL,
+  `report` varchar(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
