@@ -31,7 +31,7 @@ class ChapterController extends Controller {
      */
     public function chapterRead()
     {
-        $id = $_GET['id'];
+        $id = filter_input(INPUT_GET,'id');
         $chapterManager = new ChapterManager();
         $chapter = $chapterManager->getChapter($id);
         $commentManager = new CommentManager();
@@ -65,8 +65,8 @@ class ChapterController extends Controller {
      */
     public function chapterAdd()
     {
-        $title = $_POST['title'];
-        $content = $_POST['content'];
+        $title = filter_input(INPUT_POST, 'title');
+        $content = filter_input(INPUT_POST, 'content');
 
         $chapterManager = new ChapterManager();
         $chapterManager->addChapter($title, $content);
@@ -84,8 +84,8 @@ class ChapterController extends Controller {
      */
     public function chapterSave()
     {
-        $title = $_POST['title'];
-        $content = $_POST['content'];
+        $title = filter_input(INPUT_POST, 'title');
+        $content = filter_input(INPUT_POST, 'content');
 
         $chapterManager = new ChapterManager();
         $chapterManager->saveChapter($title, $content);
@@ -102,7 +102,7 @@ class ChapterController extends Controller {
      */
     public function chapterDelete()
     {
-        $id = $_GET['id'];
+        $id = filter_input(INPUT_GET,'id');
 
         $chapterManager = new ChapterManager();
         $chapterManager->deleteChapter($id);
@@ -123,7 +123,7 @@ class ChapterController extends Controller {
      */
     public function chapterModify()
     {
-        $id = $_GET['id'];
+        $id = filter_input(INPUT_GET,'id');
 
         $chapterManager = new ChapterManager();
         $chapter = $chapterManager->getChapter($id);
@@ -138,9 +138,9 @@ class ChapterController extends Controller {
      */
     public function updateChapter()
     {
-        $id = $_GET['id'];
-        $new_title = $_POST['title'];
-        $new_content = $_POST['content'];
+        $id = filter_input(INPUT_GET,'id');
+        $new_title = filter_input(INPUT_POST, 'title');
+        $new_content = filter_input(INPUT_POST, 'content');
 
         $chapterManager = new ChapterManager();
         $chapterManager->updateChapter($id, $new_title, $new_content);
@@ -160,9 +160,9 @@ class ChapterController extends Controller {
      */
     public function updateChapHold() {
 
-        $id = $_GET['id'];
-        $new_title = $_POST['title'];
-        $new_content = $_POST['content'];
+        $id = filter_input(INPUT_GET,'id');
+        $new_title = filter_input(INPUT_POST, 'title');
+        $new_content = filter_input(INPUT_POST, 'content');
 
         $chapterManager = new ChapterManager();
         $chapterManager->updateChapterHold($id, $new_title, $new_content);
