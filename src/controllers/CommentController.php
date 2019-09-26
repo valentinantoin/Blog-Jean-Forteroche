@@ -23,7 +23,7 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $comments = $commentManager->getComment($id);
 
-        echo $this->render("chapter.twig", ['comments' => $comments]); //FUNCTION CALL IN CHAPTERCONTROLLER !!!
+        return $this->render("chapter.twig", ['comments' => $comments]); //FUNCTION CALL IN CHAPTERCONTROLLER !!!
     }
 
     /**
@@ -45,7 +45,7 @@ class CommentController extends Controller
         $chapterManager = new ChapterManager();
         $chapter = $chapterManager->getChapter($id);
 
-        echo $this->render("chapter.twig", ['chapter' => $chapter, 'comments' => $comments]);
+        return $this->render("chapter.twig", ['chapter' => $chapter, 'comments' => $comments]);
     }
 
     /**
@@ -67,7 +67,7 @@ class CommentController extends Controller
         $chapter = $chapterManager->getChapter($id);
         $comments = $commentManager->getComment($id);
 
-        echo $this->render("chapter.twig", ['chapter' => $chapter, 'comments' => $comments]);
+        return $this->render("chapter.twig", ['chapter' => $chapter, 'comments' => $comments]);
     }
 
 

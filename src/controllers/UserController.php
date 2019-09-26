@@ -40,13 +40,13 @@ class UserController extends Controller {
                 {
                 echo "<script>alert(\"Ce pseudo est déjà pris.. Veuillez en choisir un autre svp. \")</script>";
 
-                echo $this->render('subscribe.twig');
+                return $this->render('subscribe.twig');
             }
         }else
             {
                 echo "<script>alert(\"Les mots de passe ne correspondent pas\")</script>";
 
-                echo $this->render('subscribe.twig');
+                return $this->render('subscribe.twig');
             }
     }
 
@@ -80,7 +80,7 @@ class UserController extends Controller {
         {
             echo "<script>alert(\"Identifiant ou mot de passe incorrect !\")</script>";
 
-            echo $this->render('connection.twig');
+            return $this->render('connection.twig');
         }
     }
 }

@@ -21,7 +21,7 @@ class ChapterController extends Controller {
         $chapterManager = new ChapterManager();
         $chapters = $chapterManager->getChapterPage();
 
-        echo $this->render("chapters.twig",['chapters' => $chapters]);
+        return $this->render("chapters.twig",['chapters' => $chapters]);
     }
 
     /**
@@ -39,10 +39,10 @@ class ChapterController extends Controller {
 
         if ($id == 1){
 
-            echo $this->render('presentation.twig', ['presentation' => $chapter]);
+            return $this->render('presentation.twig', ['presentation' => $chapter]);
         }else
 
-        echo $this->render("chapter.twig",['chapter' => $chapter, 'comments' => $comments]);
+            return $this->render("chapter.twig",['chapter' => $chapter, 'comments' => $comments]);
     }
 
     /**
@@ -55,7 +55,7 @@ class ChapterController extends Controller {
         $chapterManager = new ChapterManager();
         $chapterLast = $chapterManager->getLastChapter();
 
-        echo $this->render("home.twig",['chapter' => $chapterLast]);
+        return $this->render("home.twig",['chapter' => $chapterLast]);
     }
 
     /**
@@ -75,7 +75,7 @@ class ChapterController extends Controller {
 
         $chapters = $chapterManager->getChapterPage();
 
-        echo $this->render("chapters.twig",['chapters' => $chapters]);
+        return $this->render("chapters.twig",['chapters' => $chapters]);
     }
 
 
@@ -113,7 +113,7 @@ class ChapterController extends Controller {
 
         $chapters = $chapterManager->getChapterPage();
 
-        echo $this->render("chapters.twig",['chapters' => $chapters]);
+        return $this->render("chapters.twig",['chapters' => $chapters]);
     }
 
     /**
@@ -128,7 +128,7 @@ class ChapterController extends Controller {
         $chapterManager = new ChapterManager();
         $chapter = $chapterManager->getChapter($id);
 
-        echo $this->render("modify.twig",['chapter' => $chapter]);
+        return $this->render("modify.twig",['chapter' => $chapter]);
     }
 
     /**
@@ -148,10 +148,10 @@ class ChapterController extends Controller {
 
         if ($id == 1){
 
-            echo $this->render('presentation.twig', ['presentation' => $chapter]);
+            return $this->render('presentation.twig', ['presentation' => $chapter]);
         }else
 
-            echo $this->render("chapter.twig",['chapter' => $chapter]);
+            return $this->render("chapter.twig",['chapter' => $chapter]);
     }
 
 

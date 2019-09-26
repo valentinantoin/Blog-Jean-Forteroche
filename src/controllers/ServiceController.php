@@ -31,7 +31,7 @@ class ServiceController extends Controller {
         $userManager = new UserManager();
         $nbUser = $userManager->userCount();
 
-        echo $this->render("admin.twig",
+        return $this->render("admin.twig",
             ['comments' => $commentsList,
             'nbChapter' => $nbChapter['nbChapter'],
                 'nbChapterHold' => $nbChapterHold['nbChapterHold'],
@@ -51,7 +51,7 @@ class ServiceController extends Controller {
         $chapterManager = new ChapterManager();
         $chapter = $chapterManager->getChapter(1);
 
-        echo $this->render('presentation.twig', ['presentation' => $chapter]);
+        return $this->render('presentation.twig', ['presentation' => $chapter]);
     }
 
     /**
@@ -61,7 +61,7 @@ class ServiceController extends Controller {
      */
     public function connectionLoad()
     {
-        echo $this->render('connection.twig');
+        return $this->render('connection.twig');
     }
 
     /**
@@ -71,7 +71,7 @@ class ServiceController extends Controller {
      */
     public function subscribeLoad()
     {
-        echo $this->render('subscribe.twig');
+        return $this->render('subscribe.twig');
     }
 
 
@@ -92,7 +92,7 @@ class ServiceController extends Controller {
      */
     public function contactLoad()
     {
-        echo $this->render('contact.twig');
+        return $this->render('contact.twig');
     }
 
     /**
@@ -119,6 +119,6 @@ class ServiceController extends Controller {
 
         echo "<script>alert(\"Votre mail est bien envoyé\")</script>";
 
-        echo $this->render('contact.twig');
+        return $this->render('contact.twig');
     }
 }
