@@ -27,7 +27,7 @@ class Router {
 
         if(isset($_GET['access'])) {
 
-            $page = $_GET['access'];
+            $page = filter_input(INPUT_GET,'access');
         }
 
         switch ($page) {

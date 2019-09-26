@@ -17,10 +17,10 @@ class UserController extends Controller {
      */
     public function subscribe()
     {
-        $pseudo = $_POST["pseudo"];
-        $mail = $_POST["mail"];
-        $pass_unchecked = $_POST["pass"];
-        $pass_checked = $_POST["pass_check"];
+        $pseudo = filter_input(INPUT_POST,'pseudo');
+        $mail = filter_input(INPUT_POST,'mail');
+        $pass_unchecked = filter_input(INPUT_POST,'pass');
+        $pass_checked = filter_input(INPUT_POST,'pass_check');
 
         if ($pass_unchecked === $pass_checked)
         {
@@ -57,12 +57,12 @@ class UserController extends Controller {
      */
     public function connection()
     {
-        $pseudo = $_POST['pseudo'];
+        $pseudo = filter_input(INPUT_POST,'pseudo');
 
         $userManager = new UserManager();
         $user = $userManager->getUser($pseudo);
 
-        $passwordOk = password_verify($_POST['pass'], $user['pass']);
+        $passwordOk = password_verify(filter_input(INPUT_POST,'pass'), $user['pass']);
 
         if ($passwordOk )
         {

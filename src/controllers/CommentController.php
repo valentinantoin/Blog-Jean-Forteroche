@@ -19,7 +19,7 @@ class CommentController extends Controller
      */
     public function commentList()
     {
-        $id = $_GET['id'];
+        $id = filter_input(INPUT_GET,'id');
         $commentManager = new CommentManager();
         $comments = $commentManager->getComment($id);
 
@@ -33,10 +33,10 @@ class CommentController extends Controller
      */
     public function addComment()
     {
-        $id = $_GET['id'];
+        $id = filter_input(INPUT_GET,'id');
         $chapter_id = $id;
         $user_pseudo = $_SESSION['pseudo'];
-        $content = $_POST['comment'];
+        $content = filter_input(INPUT_POST,'comment');
 
         $commentManager = new CommentManager();
         $commentManager->addComment($chapter_id, $user_pseudo, $content);
@@ -55,8 +55,8 @@ class CommentController extends Controller
      */
     public function reportComment()
     {
-        $id = $_GET['id'];
-        $comment_id = $_GET['com'];
+        $id = filter_input(INPUT_GET,'id');
+        $comment_id = filter_input(INPUT_GET,'com');
 
         $commentManager = new CommentManager();
         $commentManager->setReportComment($comment_id);
@@ -76,7 +76,7 @@ class CommentController extends Controller
      */
     public function deleteComment()
     {
-        $id = $_GET['id'];
+        $id = filter_input(INPUT_GET,'id');
 
         $commentManager = new CommentManager();
         $commentManager->deleteComment($id);
@@ -91,7 +91,7 @@ class CommentController extends Controller
      */
     public function validComment()
     {
-        $id = $_GET['id'];
+        $id = filter_input(INPUT_GET,'id');
 
         $commentManager = new CommentManager();
         $commentManager->noReportComment($id);

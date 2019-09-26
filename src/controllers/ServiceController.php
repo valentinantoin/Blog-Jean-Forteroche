@@ -102,9 +102,9 @@ class ServiceController extends Controller {
      */
     public function sendMail()
     {
-        $name = htmlentities($_POST['name']);
-        $mail = htmlentities($_POST['mail']);
-        $content = htmlentities($_POST['message']);
+        $name = htmlentities(filter_input(INPUT_POST,'name'));
+        $mail = htmlentities(filter_input(INPUT_POST,'mail'));
+        $content = htmlentities(filter_input(INPUT_POST,'message'));
 
         $from = "anva6816@melon.o2switch.net";
         $to = "valentin.antoin@gmail.com";
