@@ -34,20 +34,20 @@ class UserController extends Controller {
                 $userManager = new UserManager();
                 $userManager->addUser($pseudo, $mail, $pass);
 
-                header('Location: ../index.php?access=connection');
+                $this->redirect('../index.php?access=connection');
 
-            }else
-                {
-                    $this->alert('Ce pseudo est déjà pris.. Veuillez en choisir un autre svp.');
+            }
+
+                $this->alert('Ce pseudo est déjà pris.. Veuillez en choisir un autre svp.');
 
                 return $this->render('subscribe.twig');
-            }
-        }else
-            {
+
+        }
+
                 $this->alert('Les mots de passe ne correspondent pas');
 
                 return $this->render('subscribe.twig');
-            }
+
     }
 
     /**
@@ -74,7 +74,7 @@ class UserController extends Controller {
                 $_SESSION['admin'] = true;
             }
 
-            header('Location: ../index.php');
+            $this->redirect('../index.php');
 
         }if (!$passwordOk)
         {

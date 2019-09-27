@@ -82,7 +82,7 @@ class ServiceController extends Controller {
     {
         session_destroy();
 
-        header('Location: ../index.php');
+        $this->redirect('../index.php');
     }
 
     /**

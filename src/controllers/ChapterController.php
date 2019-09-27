@@ -40,8 +40,7 @@ class ChapterController extends Controller {
         if ($id == 1){
 
             return $this->render('presentation.twig', ['presentation' => $chapter]);
-        }else
-
+        }
             return $this->render("chapter.twig",['chapter' => $chapter, 'comments' => $comments]);
     }
 
@@ -149,8 +148,7 @@ class ChapterController extends Controller {
         if ($id == 1){
 
             return $this->render('presentation.twig', ['presentation' => $chapter]);
-        }else
-
+        }
             return $this->render("chapter.twig",['chapter' => $chapter]);
     }
 
@@ -167,6 +165,6 @@ class ChapterController extends Controller {
         $chapterManager = new ChapterManager();
         $chapterManager->updateChapterHold($id, $new_title, $new_content);
 
-        header('Location: ../index.php?acces=admin');
+        $this->redirect('../index.php?access=admin');
     }
 }
