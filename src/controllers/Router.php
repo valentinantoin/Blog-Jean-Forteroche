@@ -11,7 +11,7 @@ use Twig\TwigFilter;
 class Router {
 
     public function run() {
-        
+
         $loader = new FilesystemLoader( '../src/Views');
         $twig = new Environment($loader, [
             //'cache' => false,
@@ -23,8 +23,9 @@ class Router {
         $twig->addFilter($filter);
 
         $page = 'home';
+        $access = filter_input(INPUT_GET, 'access');
 
-        if(isset($_GET['access'])) {
+        if(isset($access)) {
 
             $page = filter_input(INPUT_GET,'access');
         }
@@ -134,10 +135,10 @@ class Router {
                 if (isset($_SESSION['admin'])) {
                     $serviceController = new ServiceController($twig);
                     $serviceController->AdminLoad();
-                }else {
+                }
                     $chapterController = new ChapterController($twig);
                     $chapterController->chapterLast();
-                }
+
                 break;
 
             default:
