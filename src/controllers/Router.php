@@ -11,8 +11,7 @@ use Twig\TwigFilter;
 class Router {
 
     public function run() {
-
-
+        
         $loader = new FilesystemLoader( '../src/Views');
         $twig = new Environment($loader, [
             //'cache' => false,
@@ -31,12 +30,6 @@ class Router {
         }
 
         switch ($page) {
-
-            case "home" :
-                $chapterController = new ChapterController($twig);
-                $chapterController->chapterLast();
-                break;
-
             case "contact" :
                 $serviceController = new ServiceController($twig);
                 $serviceController->contactLoad();
