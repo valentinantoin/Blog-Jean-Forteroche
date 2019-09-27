@@ -61,7 +61,7 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->setReportComment($comment_id);
 
-        echo "<script>alert(\"Ce commentaire a bien été signalé.\")</script>";
+        $this->alert('Ce commentaire a bien été signalé.');
 
         $chapterManager = new ChapterManager();
         $chapter = $chapterManager->getChapter($id);

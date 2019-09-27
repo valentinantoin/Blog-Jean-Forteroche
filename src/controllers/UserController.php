@@ -38,13 +38,13 @@ class UserController extends Controller {
 
             }else
                 {
-                echo "<script>alert(\"Ce pseudo est déjà pris.. Veuillez en choisir un autre svp. \")</script>";
+                    $this->alert('Ce pseudo est déjà pris.. Veuillez en choisir un autre svp.');
 
                 return $this->render('subscribe.twig');
             }
         }else
             {
-                echo "<script>alert(\"Les mots de passe ne correspondent pas\")</script>";
+                $this->alert('Les mots de passe ne correspondent pas');
 
                 return $this->render('subscribe.twig');
             }
@@ -78,7 +78,7 @@ class UserController extends Controller {
 
         }if (!$passwordOk)
         {
-            echo "<script>alert(\"Identifiant ou mot de passe incorrect !\")</script>";
+            $this->alert('Identifiant ou mot de passe incorrect !');
 
             return $this->render('connection.twig');
         }

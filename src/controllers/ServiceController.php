@@ -117,7 +117,7 @@ class ServiceController extends Controller {
 
         mail($to,$subject,$message, $header);
 
-        echo "<script>alert(\"Votre mail est bien envoyé\")</script>";
+        $this->alert('Votre mail est bien envoyé.');
 
         return $this->render('contact.twig');
     }

@@ -71,7 +71,7 @@ class ChapterController extends Controller {
         $chapterManager = new ChapterManager();
         $chapterManager->addChapter($title, $content);
 
-        echo "<script>alert(\"Ce chapitre a bien été ajouté.\")</script>";
+        $this->alert('Ce chapitre a bien été ajouté.');
 
         $chapters = $chapterManager->getChapterPage();
 
@@ -90,7 +90,7 @@ class ChapterController extends Controller {
         $chapterManager = new ChapterManager();
         $chapterManager->saveChapter($title, $content);
 
-        echo "<script>alert(\"Ce chapitre a bien été sauvegardé.\")</script>";
+        $this->alert('Ce chapitre a bien été sauvegardé.');
 
         echo "<script>window.location = '../index.php?access=admin'</script>";
     }
@@ -109,7 +109,7 @@ class ChapterController extends Controller {
         $commentManager = new CommentManager();
         $commentManager->deleteComments($id);
 
-        echo "<script>alert(\"Ce chapitre a bien été supprimé.\")</script>";
+        $this->alert('Ce chapitre a bien été supprimé.');
 
         $chapters = $chapterManager->getChapterPage();
 
