@@ -92,7 +92,7 @@ class ChapterController extends Controller {
 
         $this->alert('Ce chapitre a bien été sauvegardé.');
 
-        echo "<script>window.location = '../index.php?access=admin'</script>";
+        $this->redirect('../index.php?access=admin');
     }
 
     /**

@@ -81,7 +81,7 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->deleteComment($id);
 
-        echo "<script>window.location = '../index.php?access=admin#comments'</script>";
+        $this->redirect('../index.php?access=admin#comments');
 
     }
 
@@ -96,7 +96,7 @@ class CommentController extends Controller
         $commentManager = new CommentManager();
         $commentManager->noReportComment($id);
 
-        echo "<script>window.location = '../index.php?access=admin#comments'</script>";
+        $this->redirect('../index.php?access=admin#comments');
 
     }
 }
