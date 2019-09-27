@@ -37,4 +37,13 @@ abstract class Controller {
     {
         return $this->twig->render($view, $params);
     }
+
+    /**
+     * @param $message
+     */
+    public function alert($message)
+    {
+        $alert = "<script>alert('$message');</script>";
+        echo filter_var($alert);
+    }
 }
