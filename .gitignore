@@ -3,4 +3,4 @@ vendor/
 tinymce/
 img/
 config/\DbConnection.php
-config/\jeanforteroche.sql
+config/jeanforteroche.sql
