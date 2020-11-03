@@ -125,16 +125,16 @@
         },
         {
             "name": "tracy/tracy",
-            "version": "v2.7.4",
+            "version": "v2.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "60f2e554c0253d2b7cf096298650d8293e9f8318"
+                "reference": "7e7e73d52c7e9ff0fd29dbd5b1cfdc03f3947942"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/60f2e554c0253d2b7cf096298650d8293e9f8318",
-                "reference": "60f2e554c0253d2b7cf096298650d8293e9f8318",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/7e7e73d52c7e9ff0fd29dbd5b1cfdc03f3947942",
+                "reference": "7e7e73d52c7e9ff0fd29dbd5b1cfdc03f3947942",
                 "shasum": ""
             },
             "require": {
@@ -194,7 +194,7 @@
                 "nette",
                 "profiler"
             ],
-            "time": "2020-04-11T17:26:33+00:00"
+            "time": "2020-11-02T17:06:27+00:00"
         },
         {
             "name": "twig/twig",
@@ -268,5 +268,6 @@
     "platform": {
         "composer-plugin-api": "^1.1"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
